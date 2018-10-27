@@ -8,7 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/login", name="login")
+     * @Route({
+     *  "en": "/login",
+     *  "es": "/acceder"
+     * }, name="login")
      */
     public function index()
     {
