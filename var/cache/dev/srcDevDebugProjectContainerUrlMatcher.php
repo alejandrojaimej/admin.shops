@@ -64,13 +64,13 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         switch ($pathinfo) {
             default:
                 $routes = array(
-                    '/login' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'en'), null, null, null),
-                    '/acceder' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'es'), null, null, null),
                     '/_profiler/' => array(array('_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'), null, null, null),
                     '/_profiler/search' => array(array('_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'), null, null, null),
                     '/_profiler/search_bar' => array(array('_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'), null, null, null),
                     '/_profiler/phpinfo' => array(array('_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'), null, null, null),
                     '/_profiler/open' => array(array('_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'), null, null, null),
+                    '/acceder' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'es'), null, null, null),
+                    '/login' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'en'), null, null, null),
                 );
 
                 if (!isset($routes[$pathinfo])) {
