@@ -4,6 +4,5 @@
 login:
     path:
         es: /
-        es: /acceder
         en: /login
     controller: App\Controller\LoginController::index
