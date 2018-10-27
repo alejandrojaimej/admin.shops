@@ -9,6 +9,7 @@ class LoginController extends AbstractController
 {
     /**
      * @Route({
+     *     "es": "/",
      *     "en": "/login",
      *     "es": "/acceder"
      * }, name="login")
