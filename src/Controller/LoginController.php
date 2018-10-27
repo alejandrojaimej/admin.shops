@@ -9,8 +9,8 @@ class LoginController extends AbstractController
 {
     /**
      * @Route({
-     *  "en": "/login",
-     *  "es": "/acceder"
+     *     "en": "/login",
+     *     "es": "/acceder"
      * }, name="login")
      */
     public function index()
