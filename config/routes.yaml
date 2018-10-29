@@ -4,5 +4,6 @@
 login:
     path:
         es: /
-        en: /login
+        en: /en
+        zh: /zh
     controller: App\Controller\LoginController::index

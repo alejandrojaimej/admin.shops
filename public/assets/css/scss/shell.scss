@@ -1,3 +1,4 @@
+@import 'colors.scss';
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,6 +18,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -39,4 +41,47 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+input{
+	box-sizing: border-box;
+}
+
+
+.input-group{
+	display: table;
+	i{
+		display: table-cell;
+		width: 20px;
+		font-size: 2em;
+		vertical-align: middle;
+	}
+	input{
+		display: table-cell;
+		width: 100%;
+		vertical-align: middle;
+	}
+}
+.input-group + .input-group{
+	margin-top: 15px;
+}
+
+html, body{
+	min-width: 100vw;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background: $background;
+	color:$text;
+	font-family: Raleway;
+}
+.main-button{
+	background-color: $main;
+	color:$mainText;
+	border: 0;
+	padding: 10px 25px;
+	text-align: center;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+.main-button:hover{
+	background-color: $mainHover;
 }

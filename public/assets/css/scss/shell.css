@@ -17,6 +17,8 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 article, aside, details, figcaption, figure,
@@ -45,5 +47,54 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+input {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.input-group {
+  display: table;
+}
+
+.input-group i {
+  display: table-cell;
+  width: 20px;
+  font-size: 2em;
+  vertical-align: middle;
+}
+
+.input-group input {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.input-group + .input-group {
+  margin-top: 15px;
+}
+
+html, body {
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #33343A;
+  color: #FFF;
+  font-family: Raleway;
+}
+
+.main-button {
+  background-color: #ea4c88;
+  color: #FFF;
+  border: 0;
+  padding: 10px 25px;
+  text-align: center;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.main-button:hover {
+  background-color: #f571a3;
 }
 /*# sourceMappingURL=shell.css.map */

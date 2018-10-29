@@ -3,13 +3,21 @@
 {% block title %}{{ text.section_title }}{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/LoginController.php'|file_link(0) }}">src/Controller/LoginController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/login/index.html.twig'|file_link(0) }}">templates/login/index.html.twig</a></code></li>
-    </ul>
+<div class="main-form">
+    <h1>{{text.section_h1}}</h1>
+    <i class="main material-icons">account_circle</i>
+    <div class="input-group">
+        <i class="material-icons">person</i>
+        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+$" placeholder="{{text.email_placeholder}}">
+    </div>
+    <div class="input-group">
+        <i class="material-icons">lock</i>
+        <input type="password" name="pass" placeholder="*************">
+    </div>
+    <button class="main-button">{{text.login_button}}</button>
+    <div class="other_options">
+        <a class="left" href="{{lang}}/forgot-password">{{text.forgot_pass}}</a>
+        <a class="right" href="{{lang}}/create-account">{{text.create_account}}</a>
+    </div>
 </div>
 {% endblock %}

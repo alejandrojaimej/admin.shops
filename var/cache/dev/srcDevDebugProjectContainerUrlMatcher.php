@@ -70,7 +70,8 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     '/_profiler/phpinfo' => array(array('_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'), null, null, null),
                     '/_profiler/open' => array(array('_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'), null, null, null),
                     '/' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'es'), null, null, null),
-                    '/login' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'en'), null, null, null),
+                    '/en' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'en'), null, null, null),
+                    '/zh' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'zh'), null, null, null),
                 );
 
                 if (!isset($routes[$pathinfo])) {

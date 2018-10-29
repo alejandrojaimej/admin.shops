@@ -69,23 +69,41 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"example-wrapper\">
-    <h1>Hello ";
+        echo "<div class=\"main-form\">
+    <h1>";
         // line 7
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 7, $this->source); })()), "html", null, true);
-        echo "! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 7, $this->source); })()), "section_h1", array()), "html", null, true);
+        echo "</h1>
+    <i class=\"main material-icons\">account_circle</i>
+    <div class=\"input-group\">
+        <i class=\"material-icons\">person</i>
+        <input type=\"email\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" placeholder=\"";
         // line 11
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("src/Controller/LoginController.php", 0), "html", null, true);
-        echo "\">src/Controller/LoginController.php</a></code></li>
-        <li>Your template at <code><a href=\"";
-        // line 12
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("templates/login/index.html.twig", 0), "html", null, true);
-        echo "\">templates/login/index.html.twig</a></code></li>
-    </ul>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 11, $this->source); })()), "email_placeholder", array()), "html", null, true);
+        echo "\">
+    </div>
+    <div class=\"input-group\">
+        <i class=\"material-icons\">lock</i>
+        <input type=\"password\" name=\"pass\" placeholder=\"*************\">
+    </div>
+    <button class=\"main-button\">";
+        // line 17
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 17, $this->source); })()), "login_button", array()), "html", null, true);
+        echo "</button>
+    <div class=\"other_options\">
+        <a class=\"left\" href=\"";
+        // line 19
+        echo twig_escape_filter($this->env, (isset($context["lang"]) || array_key_exists("lang", $context) ? $context["lang"] : (function () { throw new Twig_Error_Runtime('Variable "lang" does not exist.', 19, $this->source); })()), "html", null, true);
+        echo "/forgot-password\">";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 19, $this->source); })()), "forgot_pass", array()), "html", null, true);
+        echo "</a>
+        <a class=\"right\" href=\"";
+        // line 20
+        echo twig_escape_filter($this->env, (isset($context["lang"]) || array_key_exists("lang", $context) ? $context["lang"] : (function () { throw new Twig_Error_Runtime('Variable "lang" does not exist.', 20, $this->source); })()), "html", null, true);
+        echo "/create-account\">";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 20, $this->source); })()), "create_account", array()), "html", null, true);
+        echo "</a>
+    </div>
 </div>
 ";
         
@@ -108,7 +126,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
 
     public function getDebugInfo()
     {
-        return array (  86 => 12,  82 => 11,  75 => 7,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
+        return array (  102 => 20,  96 => 19,  91 => 17,  82 => 11,  75 => 7,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -118,14 +136,22 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
 {% block title %}{{ text.section_title }}{% endblock %}
 
 {% block body %}
-<div class=\"example-wrapper\">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href=\"{{ 'src/Controller/LoginController.php'|file_link(0) }}\">src/Controller/LoginController.php</a></code></li>
-        <li>Your template at <code><a href=\"{{ 'templates/login/index.html.twig'|file_link(0) }}\">templates/login/index.html.twig</a></code></li>
-    </ul>
+<div class=\"main-form\">
+    <h1>{{text.section_h1}}</h1>
+    <i class=\"main material-icons\">account_circle</i>
+    <div class=\"input-group\">
+        <i class=\"material-icons\">person</i>
+        <input type=\"email\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" placeholder=\"{{text.email_placeholder}}\">
+    </div>
+    <div class=\"input-group\">
+        <i class=\"material-icons\">lock</i>
+        <input type=\"password\" name=\"pass\" placeholder=\"*************\">
+    </div>
+    <button class=\"main-button\">{{text.login_button}}</button>
+    <div class=\"other_options\">
+        <a class=\"left\" href=\"{{lang}}/forgot-password\">{{text.forgot_pass}}</a>
+        <a class=\"right\" href=\"{{lang}}/create-account\">{{text.create_account}}</a>
+    </div>
 </div>
 {% endblock %}
 ", "login/index.html.twig", "/home/alejandro/Trabajo/shops-admin/templates/login/index.html.twig");

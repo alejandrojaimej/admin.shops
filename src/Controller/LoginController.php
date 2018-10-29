@@ -12,7 +12,8 @@ class LoginController extends AbstractController
     /**
      * @Route({
      *     "es": "/",
-     *     "en": "/login",
+     *     "en": "/en",
+     *     "zh": "/zh",
      * }, name="login")
      */
     public function index(Request $request, Api $api)
@@ -24,6 +25,7 @@ class LoginController extends AbstractController
             $texts = $resp['response'];
             return $this->render('login/index.html.twig', [
                 'controller_name' => 'LoginController',
+                'lang'=>$lang,
                 'text' => $texts,
                 'styles' => ['login.css'],
                 'scripts' => ['shell.js']
