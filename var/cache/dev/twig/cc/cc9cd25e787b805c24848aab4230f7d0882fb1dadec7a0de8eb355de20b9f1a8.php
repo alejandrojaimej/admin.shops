@@ -50,9 +50,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Hello ";
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 3, $this->source); })()), "html", null, true);
-        echo "!";
+        echo twig_escape_filter($this->env, (isset($context["section_title"]) || array_key_exists("section_title", $context) ? $context["section_title"] : (function () { throw new Twig_Error_Runtime('Variable "section_title" does not exist.', 3, $this->source); })()), "html", null, true);
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -71,25 +69,20 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class=\"example-wrapper\">
+        echo "<div class=\"example-wrapper\">
     <h1>Hello ";
-        // line 12
-        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 12, $this->source); })()), "html", null, true);
+        // line 7
+        echo twig_escape_filter($this->env, (isset($context["controller_name"]) || array_key_exists("controller_name", $context) ? $context["controller_name"] : (function () { throw new Twig_Error_Runtime('Variable "controller_name" does not exist.', 7, $this->source); })()), "html", null, true);
         echo "! ✅</h1>
 
     This friendly message is coming from:
     <ul>
         <li>Your controller at <code><a href=\"";
-        // line 16
+        // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("src/Controller/LoginController.php", 0), "html", null, true);
         echo "\">src/Controller/LoginController.php</a></code></li>
         <li>Your template at <code><a href=\"";
-        // line 17
+        // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("templates/login/index.html.twig", 0), "html", null, true);
         echo "\">templates/login/index.html.twig</a></code></li>
     </ul>
@@ -115,21 +108,16 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
 
     public function getDebugInfo()
     {
-        return array (  93 => 17,  89 => 16,  82 => 12,  74 => 6,  65 => 5,  45 => 3,  15 => 1,);
+        return array (  86 => 12,  82 => 11,  75 => 7,  72 => 6,  63 => 5,  45 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}{{ section_title }}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
 <div class=\"example-wrapper\">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
@@ -140,6 +128,6 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
     </ul>
 </div>
 {% endblock %}
-", "login/index.html.twig", "/Users/alejandrojaime/Documents/Trabajo/shops-admin/templates/login/index.html.twig");
+", "login/index.html.twig", "/home/alejandro/Trabajo/shops-admin/templates/login/index.html.twig");
     }
 }

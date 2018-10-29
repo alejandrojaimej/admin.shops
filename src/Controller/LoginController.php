@@ -18,6 +18,7 @@ class LoginController extends AbstractController
     {
         return $this->render('login/index.html.twig', [
             'controller_name' => 'LoginController',
+            'section_title' => 'Login',
             'styles' => ['login.css'],
             'scripts' => ['shell.js']
         ]);
