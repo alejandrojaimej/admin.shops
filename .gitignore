@@ -16,3 +16,5 @@
 ###< symfony/web-server-bundle ###
 var/
 var/*
+var/log/dev.log
+var/cache/dev/profiler/index.csv
