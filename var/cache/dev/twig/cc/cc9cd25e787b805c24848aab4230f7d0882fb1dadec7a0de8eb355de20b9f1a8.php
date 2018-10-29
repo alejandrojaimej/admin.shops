@@ -50,7 +50,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo twig_escape_filter($this->env, (isset($context["section_title"]) || array_key_exists("section_title", $context) ? $context["section_title"] : (function () { throw new Twig_Error_Runtime('Variable "section_title" does not exist.', 3, $this->source); })()), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 3, $this->source); })()), "section_title", array()), "html", null, true);
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -115,7 +115,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
     {
         return new Twig_Source("{% extends 'base.html.twig' %}
 
-{% block title %}{{ section_title }}{% endblock %}
+{% block title %}{{ text.section_title }}{% endblock %}
 
 {% block body %}
 <div class=\"example-wrapper\">

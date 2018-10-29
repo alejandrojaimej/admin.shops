@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Utils\Api;
 
 class LoginController extends AbstractController
@@ -12,18 +13,21 @@ class LoginController extends AbstractController
      * @Route({
      *     "es": "/",
      *     "en": "/login",
-     *     "es": "/acceder"
      * }, name="login")
      */
-    public function index(Api $api)
+    public function index(Request $request, Api $api)
     {
-        $texto = $api->getText('login', 'es');
-        var_dump($texto);
-        return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController',
-            'section_title' => 'Login',
-            'styles' => ['login.css'],
-            'scripts' => ['shell.js']
-        ]);
+        $lang = $locale = $request->getLocale();
+        $resp = $api->getText('login', $lang);
+        $resp = json_decode($resp, true);
+        if($resp['error'] === false){
+            $texts = $resp['response'];
+            return $this->render('login/index.html.twig', [
+                'controller_name' => 'LoginController',
+                'text' => $texts,
+                'styles' => ['login.css'],
+                'scripts' => ['shell.js']
+            ]);
+        }
     }
 }
