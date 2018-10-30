@@ -85,7 +85,7 @@ html, body {
 }
 
 .main-button {
-  background-color: #ea4c88;
+  background-color: #9f4cea;
   color: #FFF;
   border: 0;
   padding: 10px 25px;
@@ -95,7 +95,7 @@ html, body {
 }
 
 .main-button:hover {
-  background-color: #f571a3;
+  background-color: #b171ea;
 }
 
 .main-form {
