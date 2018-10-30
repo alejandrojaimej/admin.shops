@@ -5,7 +5,6 @@ namespace App\Utils;
 class Api
 {
     public function makePetition($url = '', $method = 'GET', $params = array()){
-        //return "https://api.mk1.es/$url".($method == 'GET' && count($params) > 0 ? '?'.http_build_query($params) : '');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,"https://api.mk1.es/$url".($method == 'GET' && count($params) > 0 ? '?'.http_build_query($params) : ''));
         if($method == 'POST'){
@@ -28,12 +27,10 @@ class Api
         curl_close ($ch);
         return  $server_output ;
     }
+    public function request($url = '', $method = 'GET', $params = array()){
+        return $this->makePetition($url, $method, $params);
+    }
     public function getText($section = 'login', $lang = 'es'){
         return $this->makePetition('text/'.$lang.'/'.$section);
-    }
-
-    public function login($user = false, $pass = false){
-        if($user === false || $pass === false){return false;}
-
     }
 }
