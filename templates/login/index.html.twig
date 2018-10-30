@@ -3,21 +3,21 @@
 {% block title %}{{ text.section_title }}{% endblock %}
 
 {% block body %}
-<div class="main-form">
+<form class="main-form" method="POST" action="">
     <h1>{{text.section_h1}}</h1>
     <i class="main material-icons">account_circle</i>
     <div class="input-group">
         <i class="material-icons">person</i>
-        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+$" placeholder="{{text.email_placeholder}}">
+        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]+$" placeholder="{{text.email_placeholder}}" required>
     </div>
     <div class="input-group">
         <i class="material-icons">lock</i>
-        <input type="password" name="pass" placeholder="*************">
+        <input type="password" name="pass" placeholder="*************" required>
     </div>
     <button class="main-button">{{text.login_button}}</button>
     <div class="other_options">
         <a class="left" href="{{lang}}/forgot-password">{{text.forgot_pass}}</a>
         <a class="right" href="{{lang}}/create-account">{{text.create_account}}</a>
     </div>
-</div>
+</form>
 {% endblock %}

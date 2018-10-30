@@ -31,4 +31,9 @@ class Api
     public function getText($section = 'login', $lang = 'es'){
         return $this->makePetition('text/'.$lang.'/'.$section);
     }
+
+    public function login($user = false, $pass = false){
+        if($user === false || $pass === false){return false;}
+
+    }
 }

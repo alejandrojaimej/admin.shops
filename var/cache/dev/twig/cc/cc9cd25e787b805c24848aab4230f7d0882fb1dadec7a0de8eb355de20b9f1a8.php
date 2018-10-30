@@ -69,7 +69,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"main-form\">
+        echo "<form class=\"main-form\" method=\"POST\" action=\"\">
     <h1>";
         // line 7
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 7, $this->source); })()), "section_h1", array()), "html", null, true);
@@ -80,11 +80,11 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         <input type=\"email\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" placeholder=\"";
         // line 11
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 11, $this->source); })()), "email_placeholder", array()), "html", null, true);
-        echo "\">
+        echo "\" required>
     </div>
     <div class=\"input-group\">
         <i class=\"material-icons\">lock</i>
-        <input type=\"password\" name=\"pass\" placeholder=\"*************\">
+        <input type=\"password\" name=\"pass\" placeholder=\"*************\" required>
     </div>
     <button class=\"main-button\">";
         // line 17
@@ -104,7 +104,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 20, $this->source); })()), "create_account", array()), "html", null, true);
         echo "</a>
     </div>
-</div>
+</form>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -136,23 +136,23 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
 {% block title %}{{ text.section_title }}{% endblock %}
 
 {% block body %}
-<div class=\"main-form\">
+<form class=\"main-form\" method=\"POST\" action=\"\">
     <h1>{{text.section_h1}}</h1>
     <i class=\"main material-icons\">account_circle</i>
     <div class=\"input-group\">
         <i class=\"material-icons\">person</i>
-        <input type=\"email\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" placeholder=\"{{text.email_placeholder}}\">
+        <input type=\"email\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" placeholder=\"{{text.email_placeholder}}\" required>
     </div>
     <div class=\"input-group\">
         <i class=\"material-icons\">lock</i>
-        <input type=\"password\" name=\"pass\" placeholder=\"*************\">
+        <input type=\"password\" name=\"pass\" placeholder=\"*************\" required>
     </div>
     <button class=\"main-button\">{{text.login_button}}</button>
     <div class=\"other_options\">
         <a class=\"left\" href=\"{{lang}}/forgot-password\">{{text.forgot_pass}}</a>
         <a class=\"right\" href=\"{{lang}}/create-account\">{{text.create_account}}</a>
     </div>
-</div>
+</form>
 {% endblock %}
 ", "login/index.html.twig", "/home/alejandro/Trabajo/shops-admin/templates/login/index.html.twig");
     }

@@ -18,6 +18,9 @@ class LoginController extends AbstractController
      */
     public function index(Request $request, Api $api)
     {
+        if(isset($_POST)){
+            dump($_POST);
+        }
         $lang = $locale = $request->getLocale();
         $resp = $api->getText('login', $lang);
         $resp = json_decode($resp, true);
