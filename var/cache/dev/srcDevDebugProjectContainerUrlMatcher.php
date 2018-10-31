@@ -64,6 +64,9 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         switch ($pathinfo) {
             default:
                 $routes = array(
+                    '/es/create/account' => array(array('_route' => 'create_account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'es'), null, null, null),
+                    '/en/es/create/account' => array(array('_route' => 'create_account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'en'), null, null, null),
+                    '/zh/es/create/account' => array(array('_route' => 'create_account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'zh'), null, null, null),
                     '/_profiler/' => array(array('_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'), null, null, null),
                     '/_profiler/search' => array(array('_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'), null, null, null),
                     '/_profiler/search_bar' => array(array('_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'), null, null, null),
@@ -72,6 +75,9 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     '/' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'es'), null, null, null),
                     '/en' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'en'), null, null, null),
                     '/zh' => array(array('_route' => 'login', '_controller' => 'App\\Controller\\LoginController::index', '_locale' => 'zh'), null, null, null),
+                    '/es/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'es'), null, null, null),
+                    '/en/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'en'), null, null, null),
+                    '/zh/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'zh'), null, null, null),
                 );
 
                 if (!isset($routes[$pathinfo])) {

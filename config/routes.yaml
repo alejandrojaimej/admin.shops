@@ -7,3 +7,9 @@ login:
         en: /en
         zh: /zh
     controller: App\Controller\LoginController::index
+create-account:
+    path:
+        es: /es/create-account
+        en: /en/create-account
+        zh: /zh/create-account
+    controller: App\Controller\CreateAccountController::index

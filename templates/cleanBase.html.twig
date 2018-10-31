@@ -7,10 +7,10 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# fuentes #}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Raleway" rel="stylesheet">
-        <link href="assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css">
         {# estilos de bootstrap #}
-        <link href="assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
         {# estilos de bootstrap específicos para esta pagina #}
         {% block pageStyles %}{% endblock %}
@@ -18,7 +18,7 @@
         {# custom styles #}
         {% if styles is defined and styles is not empty %}
             {% for style in styles %}
-                <link rel="stylesheet" href="assets/css/{{style}}" />
+                <link rel="stylesheet" href="/assets/css/{{style}}" />
             {% endfor %}
         {% endif %}
         
@@ -37,13 +37,13 @@
     <footer>
 
     {# js de bootstrap #}
-    <script src="assets/bootstrap/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/global/scripts/app.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-    <script src="assets/bootstrap/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/global/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/global/scripts/app.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+    <script src="/assets/bootstrap/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 
     {# scripts de bootstrap específicos para esta página #}
     {% block pageScripts %}{% endblock %}
@@ -51,7 +51,7 @@
     {# custom js #}
     {% if scripts is defined and scripts is not empty %}
         {% for script in scripts %}
-            <script src="assets/js/{{script}}"></script>
+            <script src="/assets/js/{{script}}"></script>
         {% endfor %}
     {% endif %}
     </footer>

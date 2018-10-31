@@ -1,0 +1,49 @@
+{% extends 'cleanBase.html.twig' %}
+
+{% block title %}{{ text.section_title }}{% endblock %}
+{% block pageStyles %}
+    <link href="/assets/bootstrap/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/bootstrap/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/bootstrap/pages/css/login-2.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/bootstrap/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css">
+    <link href="/assets/bootstrap/global/css/plugins-md.min.css" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block body %}
+
+<div class="logo">
+    <a href="index.html">
+        <img src="/assets/bootstrap/pages/img/logo-big-white.png" style="height: 17px;" alt=""> </a>
+</div>
+<div class="content">
+    <form class="register-form" action="" method="post" novalidate="novalidate" style="display: block;">
+        <div class="form-title">
+            <span class="form-title">{{text.section_h1}}</span>
+        </div>
+
+        <p class="hint">{{text.section_h2}}</p>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">{{text.email}}</label>
+            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{text.email}}" name="username"> </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">{{text.password}}</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.password}}" name="password"> </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">{{text.retype_password}}</label>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.retype_password}}" name="rpassword"> </div>
+        <div class="form-group margin-top-20 margin-bottom-20">
+            <label class="mt-checkbox mt-checkbox-outline">
+                <input type="checkbox" name="tnc"> {{text.agree_text}}
+                <a href="javascript:;">{{text.terms_of_service}} </a> &amp;
+                <a href="javascript:;">{{text.privacy_policy}} </a>
+                <span></span>
+            </label>
+            <div id="register_tnc_error"> </div>
+        </div>
+        <div class="form-actions">
+            <a href="{% if lang == 'es' %}/{% else %}/{{lang}}{% endif %}" class="btn btn-default">{{text.back_button}}</a>
+            <button type="submit" class="btn red uppercase pull-right">{{text.submit_button}}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -377,6 +377,13 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/home/alejandro/Trabajo/shops-admin/var/log/dev.log</argument>
     </service>
+    <service id="App\Controller\CreateAccountController" class="App\Controller\CreateAccountController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ychIlgF.App\Controller\CreateAccountController"/>
+      </call>
+    </service>
     <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -4121,6 +4128,9 @@
         <argument>server:log</argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\CreateAccountController" class="App\Controller\CreateAccountController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CreateAccountController" class="App\Controller\CreateAccountController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CreateAccountController" class="App\Controller\CreateAccountController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\DependencyInjection\ServiceSubscriberInterface.0.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4274,10 +4284,12 @@
         <argument key="api" type="service" id="App\Utils\Api"/>
       </argument>
     </service>
-    <service id=".service_locator.4IRYZSs" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.uDKMzRW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\CreateAccountController::index" type="service" id=".service_locator.VcDWBOt"/>
         <argument key="App\Controller\LoginController::index" type="service" id=".service_locator.VcDWBOt"/>
+        <argument key="App\Controller\CreateAccountController:index" type="service" id=".service_locator.VcDWBOt"/>
         <argument key="App\Controller\LoginController:index" type="service" id=".service_locator.VcDWBOt"/>
       </argument>
     </service>
@@ -4515,7 +4527,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.4IRYZSs"/>
+      <argument type="service" id=".service_locator.uDKMzRW"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -4535,6 +4547,11 @@
         <argument key="session" type="service" id="session" on-invalid="ignore"/>
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.ychIlgF.App\Controller\CreateAccountController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <argument>App\Controller\CreateAccountController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ychIlgF" method="withContext"/>
     </service>
     <service id=".service_locator.ychIlgF.App\Controller\LoginController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument>App\Controller\LoginController</argument>
@@ -4913,7 +4930,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.4IRYZSs"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.uDKMzRW"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~xM7tAoS" public="false"/>
