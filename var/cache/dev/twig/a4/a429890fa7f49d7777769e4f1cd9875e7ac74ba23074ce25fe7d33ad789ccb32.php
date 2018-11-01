@@ -44,15 +44,15 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
         ";
         // line 9
         echo "        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons|Raleway\" rel=\"stylesheet\">
-        <link href=\"assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css\" rel=\"stylesheet\" type=\"text/css\">
         ";
         // line 13
-        echo "        <link href=\"assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/themes/darkblue.min.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\">
-        <link href=\"assets/bootstrap/layouts/layout/css/custom.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        echo "        <link href=\"/assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/themes/darkblue.min.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/custom.min.css\" rel=\"stylesheet\" type=\"text/css\">
 
         ";
         // line 20
@@ -64,7 +64,7 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
             $context['_seq'] = twig_ensure_traversable((isset($context["styles"]) || array_key_exists("styles", $context) ? $context["styles"] : (function () { throw new Twig_Error_Runtime('Variable "styles" does not exist.', 21, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["style"]) {
                 // line 22
-                echo "                <link rel=\"stylesheet\" href=\"assets/css/";
+                echo "                <link rel=\"stylesheet\" href=\"/assets/css/";
                 echo twig_escape_filter($this->env, $context["style"], "html", null, true);
                 echo "\" />
             ";
@@ -104,13 +104,13 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
 
     ";
         // line 43
-        echo "    <script src=\"assets/bootstrap/global/plugins/jquery.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/plugins/js.cookie.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/scripts/app.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/layout/scripts/layout.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/global/scripts/quick-nav.min.js\" type=\"text/javascript\"></script>
+        echo "    <script src=\"/assets/bootstrap/global/plugins/jquery.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/plugins/js.cookie.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/scripts/app.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/layout/scripts/layout.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/global/scripts/quick-nav.min.js\" type=\"text/javascript\"></script>
     ";
         // line 51
         echo "    ";
@@ -121,7 +121,7 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
             $context['_seq'] = twig_ensure_traversable((isset($context["scripts"]) || array_key_exists("scripts", $context) ? $context["scripts"] : (function () { throw new Twig_Error_Runtime('Variable "scripts" does not exist.', 52, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["script"]) {
                 // line 53
-                echo "            <script src=\"assets/js/";
+                echo "            <script src=\"/assets/js/";
                 echo twig_escape_filter($this->env, $context["script"], "html", null, true);
                 echo "\"></script>
         ";
@@ -205,19 +205,19 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# fuentes #}
         <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons|Raleway\" rel=\"stylesheet\">
-        <link href=\"assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/global/plugins/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/global/plugins/simple-line-icons/simple-line-icons.min.css\" rel=\"stylesheet\" type=\"text/css\">
         {# estilos de bootstrap #}
-        <link href=\"assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
-        <link href=\"assets/bootstrap/layouts/layout/css/themes/darkblue.min.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\">
-        <link href=\"assets/bootstrap/layouts/layout/css/custom.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/global/plugins/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/layout.min.css\" rel=\"stylesheet\" type=\"text/css\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/themes/darkblue.min.css\" rel=\"stylesheet\" type=\"text/css\" id=\"style_color\">
+        <link href=\"/assets/bootstrap/layouts/layout/css/custom.min.css\" rel=\"stylesheet\" type=\"text/css\">
 
         {# custom styles #}
         {% if styles is defined and styles is not empty %}
             {% for style in styles %}
-                <link rel=\"stylesheet\" href=\"assets/css/{{style}}\" />
+                <link rel=\"stylesheet\" href=\"/assets/css/{{style}}\" />
             {% endfor %}
         {% endif %}
         
@@ -238,17 +238,17 @@ class __TwigTemplate_295e440349952fe148c35fffa57140bad91e0f0a1b9944bff936a182934
     <footer>
 
     {# js de bootstrap #}
-    <script src=\"assets/bootstrap/global/plugins/jquery.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/plugins/js.cookie.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/global/scripts/app.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/layout/scripts/layout.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js\" type=\"text/javascript\"></script>
-    <script src=\"assets/bootstrap/layouts/global/scripts/quick-nav.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/plugins/jquery.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/plugins/bootstrap/js/bootstrap.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/plugins/js.cookie.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/global/scripts/app.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/layout/scripts/layout.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/global/scripts/quick-sidebar.min.js\" type=\"text/javascript\"></script>
+    <script src=\"/assets/bootstrap/layouts/global/scripts/quick-nav.min.js\" type=\"text/javascript\"></script>
     {# custom js #}
     {% if scripts is defined and scripts is not empty %}
         {% for script in scripts %}
-            <script src=\"assets/js/{{script}}\"></script>
+            <script src=\"/assets/js/{{script}}\"></script>
         {% endfor %}
     {% endif %}
     </footer>
