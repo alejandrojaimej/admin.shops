@@ -20,25 +20,29 @@
         <div class="form-title">
             <span class="form-title">{{text.section_h1}}</span>
         </div>
-
+        {% if errorText  %}
+            <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button>
+                <span>{{text.error_message}}</span>
+            </div>
+        {% endif %}
         <p class="hint">{{text.section_h2}}</p>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">{{text.email}}</label>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="{{text.email}}" name="username"> </div>
+            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="{{text.email}}" name="email" value="{{email}}"> </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">{{text.password}}</label>
-            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.password}}" name="password"> </div>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.password}}" name="password" value="{{password}}"> </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">{{text.retype_password}}</label>
-            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.retype_password}}" name="rpassword"> </div>
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="{{text.retype_password}}" name="rpassword" value="{{rpassword}}"> </div>
         <div class="form-group margin-top-20 margin-bottom-20">
             <label class="mt-checkbox mt-checkbox-outline">
-                <input type="checkbox" name="tnc"> {{text.agree_text}}
+                <input type="checkbox" name="tnc" {% if accept == true %} checked="checked"{% endif %}> {{text.agree_text}}
                 <a href="javascript:;">{{text.terms_of_service}} </a> &amp;
                 <a href="javascript:;">{{text.privacy_policy}} </a>
                 <span></span>
             </label>
-            <div id="register_tnc_error"> </div>
         </div>
         <div class="form-actions">
             <a href="{% if lang == 'es' %}/{% else %}/{{lang}}{% endif %}" class="btn btn-default">{{text.back_button}}</a>

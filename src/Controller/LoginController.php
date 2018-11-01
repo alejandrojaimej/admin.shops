@@ -18,13 +18,16 @@ class LoginController extends AbstractController
      */
     public function index(Request $request, Api $api)
     {
+        $email = '';
+        $password = '';
         $errorText = false;
         if(isset($_POST) && !empty($_POST)){
-            //Llamada a la api para comprobar el usuario y contraseña (la contraseña se manda encriptada)
-            $hash = hash("sha512", rand(), true);
-            //$password_hash = password_hash($_POST['pass'], $hash);
+            $email = $_POST['email'];
+            $password = $_POST['pass'];
+            //Llamada a la api para comprobar el usuario y contraseña
             $resp = $api->request('login', 'POST', array('email'=>$_POST['email'],'password'=>$_POST['pass']));
             $resp = json_decode($resp, true);
+            dump($resp);
             if($resp['response']!==false && is_numeric($resp['response'])){
                 //redireccion al index de la admin
             }else{
@@ -44,6 +47,8 @@ class LoginController extends AbstractController
                 'controller_name' => 'LoginController',
                 'lang'=>$lang,
                 'text' => $texts,
+                'email' => $email,
+                'password' => $password,
                 'errorText' => $errorText,
                 'styles' => ['login.css'],
                 'scripts' => ['shell.js']

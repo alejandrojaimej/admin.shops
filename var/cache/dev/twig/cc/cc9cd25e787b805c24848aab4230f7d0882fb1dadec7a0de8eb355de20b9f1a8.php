@@ -131,10 +131,15 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
             <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"email\" autocomplete=\"off\" placeholder=\"";
         // line 33
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["text"]) || array_key_exists("text", $context) ? $context["text"] : (function () { throw new Twig_Error_Runtime('Variable "text" does not exist.', 33, $this->source); })()), "email_placeholder", array()), "html", null, true);
-        echo "\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\"> </div>
+        echo "\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" value=\"";
+        echo twig_escape_filter($this->env, (isset($context["email"]) || array_key_exists("email", $context) ? $context["email"] : (function () { throw new Twig_Error_Runtime('Variable "email" does not exist.', 33, $this->source); })()), "html", null, true);
+        echo "\"> </div>
         <div class=\"form-group\">
             <label class=\"control-label visible-ie8 visible-ie9\">*************</label>
-            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"password\" autocomplete=\"off\" placeholder=\"*************\" name=\"pass\"> </div>
+            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"password\" autocomplete=\"off\" placeholder=\"*************\" name=\"pass\" value=\"";
+        // line 36
+        echo twig_escape_filter($this->env, (isset($context["password"]) || array_key_exists("password", $context) ? $context["password"] : (function () { throw new Twig_Error_Runtime('Variable "password" does not exist.', 36, $this->source); })()), "html", null, true);
+        echo "\"> </div>
         <div class=\"form-actions\">
             <button type=\"submit\" class=\"btn red btn-block uppercase\">";
         // line 38
@@ -492,7 +497,7 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
 
     public function getDebugInfo()
     {
-        return array (  167 => 51,  156 => 45,  148 => 42,  141 => 38,  133 => 33,  129 => 32,  125 => 30,  119 => 27,  115 => 25,  113 => 24,  108 => 22,  97 => 13,  88 => 12,  73 => 5,  64 => 4,  46 => 3,  15 => 1,);
+        return array (  172 => 51,  161 => 45,  153 => 42,  146 => 38,  141 => 36,  133 => 33,  129 => 32,  125 => 30,  119 => 27,  115 => 25,  113 => 24,  108 => 22,  97 => 13,  88 => 12,  73 => 5,  64 => 4,  46 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -529,10 +534,10 @@ class __TwigTemplate_f3360d2173f28b6ecbfeb750f9c8f60ebfd21f4342d9b11872ea2705910
         <div class=\"form-group\">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
             <label class=\"control-label visible-ie8 visible-ie9\">{{text.email_placeholder}}</label>
-            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"email\" autocomplete=\"off\" placeholder=\"{{text.email_placeholder}}\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\"> </div>
+            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"email\" autocomplete=\"off\" placeholder=\"{{text.email_placeholder}}\" name=\"email\" pattern=\"[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]+\$\" value=\"{{email}}\"> </div>
         <div class=\"form-group\">
             <label class=\"control-label visible-ie8 visible-ie9\">*************</label>
-            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"password\" autocomplete=\"off\" placeholder=\"*************\" name=\"pass\"> </div>
+            <input class=\"form-control form-control-solid placeholder-no-fix\" type=\"password\" autocomplete=\"off\" placeholder=\"*************\" name=\"pass\" value=\"{{password}}\"> </div>
         <div class=\"form-actions\">
             <button type=\"submit\" class=\"btn red btn-block uppercase\">{{text.login_button}}</button>
         </div>
