@@ -4286,18 +4286,25 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.Q5zfoUp" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="api" type="service" id="App\Utils\Api"/>
+        <argument key="mailer" type="service" id="swiftmailer.mailer.default"/>
+      </argument>
+    </service>
     <service id=".service_locator.VcDWBOt" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="api" type="service" id="App\Utils\Api"/>
       </argument>
     </service>
-    <service id=".service_locator.uDKMzRW" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.HtvzLLR" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\CreateAccountController::index" type="service" id=".service_locator.VcDWBOt"/>
+        <argument key="App\Controller\CreateAccountController::index" type="service" id=".service_locator.Q5zfoUp"/>
         <argument key="App\Controller\LoginController::index" type="service" id=".service_locator.VcDWBOt"/>
-        <argument key="App\Controller\CreateAccountController:index" type="service" id=".service_locator.VcDWBOt"/>
+        <argument key="App\Controller\CreateAccountController:index" type="service" id=".service_locator.Q5zfoUp"/>
         <argument key="App\Controller\LoginController:index" type="service" id=".service_locator.VcDWBOt"/>
       </argument>
     </service>
@@ -4535,7 +4542,7 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.uDKMzRW"/>
+      <argument type="service" id=".service_locator.HtvzLLR"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
@@ -4938,7 +4945,7 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.uDKMzRW"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.HtvzLLR"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id=".service_locator.AoifO_3" alias=".2_ServiceLocator~xM7tAoS" public="false"/>

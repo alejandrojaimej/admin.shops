@@ -1,0 +1,37 @@
+{#
+    PLANTILLA BASE PARA TODOS LOS EMAILS.
+    INCLUYE CABECERA Y FOOTER
+    EL ANCHO MAXIMO ES 600px 
+#}
+<!DOCTYPE html>
+<html lang={{lang}}>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+    <table style="display:table;margin 0 auto;border-collapse : collapse;border:0;width:100%;max-width:600px;">
+        {# LOGOTIPO #}
+        <tr>
+            <td style="margin:20px 0; padding:15px;border:0;text-align:center;">
+                <a href="#">
+                    <img src="" >
+                </a>
+            </td>
+        </tr>
+        {# BODY ESPECÍFICO DE CADA EMAIL #}
+        <tr>
+            <td style="margin:0px; padding:15px;border:0;">
+                {% block body %}{% endblock %}
+            </td>
+        </tr>
+        {# TEXTOS FOOTER #}
+        <tr>
+            <td style="margin:20px 0; padding:15px;border:0;">
+                
+            </td>
+        </tr>
+    </table>
+    </body>
+</html>

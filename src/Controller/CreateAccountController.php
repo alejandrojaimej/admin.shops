@@ -12,7 +12,7 @@ class CreateAccountController extends AbstractController
     /**
      * @Route("/es/create/account", name="create_account")
      */
-    public function index(Request $request, Api $api)
+    public function index(Request $request, Api $api, \Swift_Mailer $mailer)
     {
         $errorText = false;
         $email = '';
@@ -59,6 +59,23 @@ class CreateAccountController extends AbstractController
                         }else{
                             //iniciar sesion como el usuario
                             //redireccionar a la admin
+                            $message = (new \Swift_Message('Hello Email'))
+                            ->setFrom('noreply.mk1.es@gmail.com')
+                            ->setTo($email)
+                            ->setBody(
+                                $this->renderView(
+                                    'emails/verifyAccount.html.twig',
+                                    array(
+                                        'lang'=>$lang,
+                                        'name' => $email
+                                    )
+                                ),
+                                'text/html'
+                            );
+
+                            $mailer->send($message);
+                            //heaader('LOCATION:);
+                            //return $this->render();
                         }
                     }
                 }else{
