@@ -69,7 +69,7 @@ class CreateAccountController extends AbstractController
                                     array(
                                         'lang'=>$lang,
                                         'name' => $user['email'],
-                                        'token' => urlencode($user['token'])
+                                        'token' => $user['token']
                                     )
                                 ),
                                 'text/html'
