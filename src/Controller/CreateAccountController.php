@@ -59,6 +59,7 @@ class CreateAccountController extends AbstractController
                         }else{
                             //iniciar sesion como el usuario
                             //redireccionar a la admin
+                            $user = $resp['response'];
                             $message = (new \Swift_Message('Hello Email'))
                             ->setFrom('noreply.mk1.es@gmail.com')
                             ->setTo($email)
@@ -67,7 +68,8 @@ class CreateAccountController extends AbstractController
                                     'emails/verifyAccount.html.twig',
                                     array(
                                         'lang'=>$lang,
-                                        'name' => $email
+                                        'name' => $email,
+                                        'token' => urlencode($user['token'])
                                     )
                                 ),
                                 'text/html'
