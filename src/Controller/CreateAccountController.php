@@ -52,7 +52,6 @@ class CreateAccountController extends AbstractController
                         
                         $resp = $api->request('registerUser', 'PUT', array('email'=>$_POST['email'], 'password'=>$_POST['password']));
                         $resp = json_decode($resp, true);
-                        dump($resp);
                         if($resp['response'] === false){
                             $errorText = true;
                             $texts['error_message'] = $texts['insert_error'];
@@ -60,6 +59,7 @@ class CreateAccountController extends AbstractController
                             //iniciar sesion como el usuario
                             //redireccionar a la admin
                             $user = $resp['response'];
+                            dump($user);
                             $message = (new \Swift_Message('Hello Email'))
                             ->setFrom('noreply.mk1.es@gmail.com')
                             ->setTo($email)
@@ -68,7 +68,7 @@ class CreateAccountController extends AbstractController
                                     'emails/verifyAccount.html.twig',
                                     array(
                                         'lang'=>$lang,
-                                        'name' => $email,
+                                        'name' => $user['email'],
                                         'token' => urlencode($user['token'])
                                     )
                                 ),
