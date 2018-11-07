@@ -14,7 +14,9 @@
 ###> symfony/web-server-bundle ###
 #/.web-server-pid
 ###< symfony/web-server-bundle ###
+/var
+/var/*
 var/
 var/*
 var/log/dev.log
-var/cache/dev/profiler/index.csv
+var/cache/dev/profiler/index.csv 

@@ -78,6 +78,21 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     '/es/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'es'), null, null, null),
                     '/en/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'en'), null, null, null),
                     '/zh/create-account' => array(array('_route' => 'create-account', '_controller' => 'App\\Controller\\CreateAccountController::index', '_locale' => 'zh'), null, null, null),
+                    '/es/dashboard' => array(array('_route' => 'dashboard', '_controller' => 'App\\Controller\\DashboardController::index', '_locale' => 'es'), null, null, null),
+                    '/en/dashboard' => array(array('_route' => 'dashboard', '_controller' => 'App\\Controller\\DashboardController::index', '_locale' => 'en'), null, null, null),
+                    '/zh/dashboard' => array(array('_route' => 'dashboard', '_controller' => 'App\\Controller\\DashboardController::index', '_locale' => 'zh'), null, null, null),
+                    '/es/comerces' => array(array('_route' => 'comerces', '_controller' => 'App\\Controller\\ComercesController::index', '_locale' => 'es'), null, null, null),
+                    '/en/comerces' => array(array('_route' => 'comerces', '_controller' => 'App\\Controller\\ComercesController::index', '_locale' => 'en'), null, null, null),
+                    '/zh/comerces' => array(array('_route' => 'comerces', '_controller' => 'App\\Controller\\ComercesController::index', '_locale' => 'zh'), null, null, null),
+                    '/es/comerces/edit' => array(array('_route' => 'comerces_edit', '_controller' => 'App\\Controller\\ComercesController::edit', '_locale' => 'es'), null, null, null),
+                    '/en/comerces/edit' => array(array('_route' => 'comerces_edit', '_controller' => 'App\\Controller\\ComercesController::edit', '_locale' => 'en'), null, null, null),
+                    '/zh/comerces/edit' => array(array('_route' => 'comerces_edit', '_controller' => 'App\\Controller\\ComercesController::edit', '_locale' => 'zh'), null, null, null),
+                    '/es/comerces/new' => array(array('_route' => 'comerces_new', '_controller' => 'App\\Controller\\ComercesController::new', '_locale' => 'es'), null, null, null),
+                    '/en/comerces/new' => array(array('_route' => 'comerces_new', '_controller' => 'App\\Controller\\ComercesController::new', '_locale' => 'en'), null, null, null),
+                    '/zh/comerces/new' => array(array('_route' => 'comerces_new', '_controller' => 'App\\Controller\\ComercesController::new', '_locale' => 'zh'), null, null, null),
+                    '/es/comerces/delete' => array(array('_route' => 'comerces_delete', '_controller' => 'App\\Controller\\ComercesController::delete', '_locale' => 'es'), null, null, null),
+                    '/en/comerces/delete' => array(array('_route' => 'comerces_delete', '_controller' => 'App\\Controller\\ComercesController::delete', '_locale' => 'en'), null, null, null),
+                    '/zh/comerces/delete' => array(array('_route' => 'comerces_delete', '_controller' => 'App\\Controller\\ComercesController::delete', '_locale' => 'zh'), null, null, null),
                 );
 
                 if (!isset($routes[$pathinfo])) {
@@ -118,6 +133,11 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             .'|(*:159)'
                         .')'
                     .')'
+                    .'|/e(?'
+                        .'|s/activate\\-user/(.*)(*:195)'
+                        .'|n/activate\\-user/(.*)(*:224)'
+                    .')'
+                    .'|/zh/activate\\-user/(.*)(*:256)'
                 .')$}sD',
         );
 
@@ -133,6 +153,9 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                             136 => array(array('_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'), array('token'), null, null),
                             149 => array(array('_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'), array('token'), null, null),
                             159 => array(array('_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'), array('token'), null, null),
+                            195 => array(array('_route' => 'activate-user', '_controller' => 'App\\Controller\\CreateAccountController::activate', '_locale' => 'es'), array('token'), null, null),
+                            224 => array(array('_route' => 'activate-user', '_controller' => 'App\\Controller\\CreateAccountController::activate', '_locale' => 'en'), array('token'), null, null),
+                            256 => array(array('_route' => 'activate-user', '_controller' => 'App\\Controller\\CreateAccountController::activate', '_locale' => 'zh'), array('token'), null, null),
                         );
 
                         list($ret, $vars, $requiredMethods, $requiredSchemes) = $routes[$m];
@@ -158,7 +181,7 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                         return $ret;
                 }
 
-                if (159 === $m) {
+                if (256 === $m) {
                     break;
                 }
                 $regex = substr_replace($regex, 'F', $m - $offset, 1 + strlen($m));

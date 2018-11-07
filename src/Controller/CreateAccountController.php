@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Utils\Api;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 
 class CreateAccountController extends AbstractController
 {
@@ -99,6 +101,24 @@ class CreateAccountController extends AbstractController
                     'rpassword' => $rpassword,
                     'accept' => $accept
             ]);
+        }
+    }
+
+    public function activate($token = null, Request $request, Api $api, \Swift_Mailer $mailer)
+    {
+        $lang = $locale = $request->getLocale();
+        $resp = $api->request('activateUser', 'POST', array('userToken'=>$token));
+        $resp = json_decode($resp, true);
+        if($resp['response'] !== false && isset($resp['response']['id'])){
+            $session = new Session();
+            if($this->container->get('session')->isStarted() === false){
+                $session->start();
+            }
+            $session->set('user_id', $resp['response']);
+            header('Location: /'.$lang.'/dashboard');exit;
+        }else{
+            header('Location: /'.($lang == 'es' ? '' : $lang));exit;
+
         }
     }
 }

@@ -1,15 +1,67 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+#Login de usuarios
 login:
     path:
         es: /
         en: /en
         zh: /zh
     controller: App\Controller\LoginController::index
+
+#Crear cuentas de usuario
 create-account:
     path:
         es: /es/create-account
         en: /en/create-account
         zh: /zh/create-account
     controller: App\Controller\CreateAccountController::index
+
+#Activar un usuario ya creado
+activate-user:
+    path:
+        es: /es/activate-user/{token}
+        en: /en/activate-user/{token}
+        zh: /zh/activate-user/{token}
+    controller: App\Controller\CreateAccountController::activate
+    requirements:
+        token: '.*' #para que sean válidos todos los caracteres
+
+#Estadísticas generales del panel de control
+dashboard:
+    path:
+        es: /es/dashboard
+        en: /en/dashboard
+        zh: /zh/dashboard
+    controller: App\Controller\DashboardController::index
+
+#Ver todos los comercios
+comerces:
+    path:
+        es: /es/comerces
+        en: /en/comerces
+        zh: /zh/comerces
+    controller: App\Controller\ComercesController::index
+
+#Editar comercios
+comerces_edit:
+    path:
+        es: /es/comerces/edit
+        en: /en/comerces/edit
+        zh: /zh/comerces/edit
+    controller: App\Controller\ComercesController::edit
+#Crear comercios
+comerces_new:
+    path:
+        es: /es/comerces/new
+        en: /en/comerces/new
+        zh: /zh/comerces/new
+    controller: App\Controller\ComercesController::new
+#Borrar comercios
+comerces_delete:
+    path:
+        es: /es/comerces/delete
+        en: /en/comerces/delete
+        zh: /zh/comerces/delete
+    controller: App\Controller\ComercesController::delete

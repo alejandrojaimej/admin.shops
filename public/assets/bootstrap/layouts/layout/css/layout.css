@@ -1422,7 +1422,9 @@ Page sidebar
     left: -235px;
     transition: all 0.3s; }
     .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar {
-      margin: 0 !important; }
+      margin: 0 !important; 
+      min-height: 100vh;
+    }
       .page-sidebar-mobile-offcanvas .page-sidebar-wrapper .page-sidebar .page-sidebar-menu {
         width: 100%;
         margin: 0 !important;
