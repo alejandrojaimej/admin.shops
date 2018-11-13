@@ -1,4 +1,10 @@
 {% extends 'emails/base.html.twig' %}
 {% block body %}
-    <a href="https://admin.mk1.es/{{lang}}/activate-user/{{token}}">pinche aquí para verificar su cuenta</a>
+    <table style="display:table;margin 0 auto;border-collapse : collapse;border:0;width:100%;">
+        <tr>
+            <td>
+                <a href="https://admin.mk1.es/{{lang}}/activate-user/{{token}}">pinche aquí para verificar su cuenta</a>
+            </td>
+        </tr>
+    </table>
 {% endblock %}
