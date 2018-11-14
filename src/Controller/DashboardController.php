@@ -23,6 +23,7 @@ class DashboardController extends AbstractController
         $resp = $api->getText('dashboard', $lang);
         $resp = json_decode($resp, true);
         $texts = $resp['response'];
+        //dump($texts);exit;
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'Dashboard',
             'function_name' => 'index',
