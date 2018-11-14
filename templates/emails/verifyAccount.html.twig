@@ -2,8 +2,20 @@
 {% block body %}
     <table style="display:table;margin 0 auto;border-collapse : collapse;border:0;width:100%;">
         <tr>
-            <td>
-                <a href="https://admin.mk1.es/{{lang}}/activate-user/{{token}}">pinche aquí para verificar su cuenta</a>
+            <td style="margin:0px;padding:0px;border:0;text-align:center;">
+                <h1>Bienvenido a MK1!</h1>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin:0px;padding:15px 0 0 0;border:0;text-align:center;">
+                <a href="https://admin.mk1.es/{{lang}}/activate-user/{{token}}" style="padding:20px 10px;background-color:#9f4cea;color:#FFF;font-size:1.4em;font-wheight:bold;">Activa tu cuenta</a>
+            </td>
+        </tr>
+        <tr>
+            <td style="margin:0px;padding:15px 0 15px 0;border:0;text-align:center;background-color:#DDDDDD;">
+                <span style="font-size:1.1em;">Tu nombre de usuario en MK1 es: {{name}}</span>
+                <br>
+                <span style="font-size:0.85em;">Puede recuperar tu contraseña en <a href="https://admin.mk1.es/{{lang}}/forgot-password">https://admin.mk1.es/{{lang}}/forgot-password</a></span>
             </td>
         </tr>
     </table>
