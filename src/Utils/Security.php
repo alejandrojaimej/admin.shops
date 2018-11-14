@@ -19,5 +19,6 @@ class Security extends AbstractController
         if($session->get('user_id') == null || !is_numeric($session->get('user_id')) ){
             header('Location: '.($lang == 'es' ? '/' : '/'.$lang));exit;
         }
+        return $session->get('user_id');
     }
 }

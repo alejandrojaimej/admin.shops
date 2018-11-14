@@ -62,6 +62,8 @@
                     </li>
                 </ul>
             </li>
+
+            {# comerces #}
             <li class="heading">
                 <h3 class="uppercase">{{text.menu_item_2_title}}</h3>
             </li>
@@ -74,22 +76,51 @@
                 <ul class="sub-menu">
                     <li class="nav-item {% if controller_name == 'Comerces' and function_name == 'edit' %}active open{% endif %}">
                         <a href="/{{lang}}/comerces/edit" class="nav-link ">
+                            <i class="fa fa-plus"></i>
                             <span class="title">{{text.menu_item_2_1}}</span>
                         </a>
                     </li>
-                    <li class="nav-item {% if controller_name == 'Comerces' and function_name == 'new' %}active open{% endif %}">
-                        <a href="/{{lang}}/comerces/new" class="nav-link ">
-                            <span class="title">{{text.menu_item_2_1_1}}</span>
+                    {% for key, value in comerces %}
+                    <li class="nav-item  {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-home"></i>&nbsp;<span class="title">{{value}}</span>
+                            <span class="arrow {% if controller_name == 'Comerces' and comerce_id == key %}open{% endif %}"></span>
                         </a>
+                        <ul class="sub-menu">
+                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
+                                <a href="/{{lang}}/comerce/edit/{{key}}" class="nav-link ">
+                                    <i class="fa fa-pencil"></i>&nbsp;<span class="title">{{text.menu_item_2_1_1}}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
+                                <a href="/{{lang}}/comerce/delete/{{key}}" class="nav-link ">
+                                   <i class="fa fa-trash"></i>&nbsp;<span class="title">{{text.menu_item_2_1_2}}</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item {% if controller_name == 'Comerces' and function_name == 'delete' %}active open{% endif %}">
-                        <a href="/{{lang}}/comerces/delete" class="nav-link ">
-                            <span class="title">{{text.menu_item_2_1_2}}</span>
+                    {% endfor %}
+                </ul>
+            </li>
+
+            {# products #}
+            <li class="heading">
+                <h3 class="uppercase">{{text.menu_item_3_title}}</h3>
+            </li>
+            <li class="nav-item {% if controller_name == 'Products' %}active open{% endif %}">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-briefcase"></i>
+                    <span class="title">{{text.menu_item_3}}</span>
+                    <span class="arrow {% if controller_name == 'Products' %}open{% endif %}"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item {% if controller_name == 'Products' and function_name == 'edit' %}active open{% endif %}">
+                        <a href="/{{lang}}/products/edit" class="nav-link ">
+                            <span class="title">{{text.menu_item_3_1}}</span>
                         </a>
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
 
         </ul>
         {# END SIDEBAR MENU #}

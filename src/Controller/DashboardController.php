@@ -17,18 +17,17 @@ class DashboardController extends AbstractController
     public function index(Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
-        $security->checkLogged($lang, 'dashboard');
-
-
-        $resp = $api->getText('dashboard', $lang);
+        $id = $security->checkLogged($lang, 'dashboard');
+        $resp = $api->request('adminText/'.$lang.'/dashboard/'.$id);
         $resp = json_decode($resp, true);
-        $texts = $resp['response'];
-        //dump($texts);exit;
+        $resp = $resp['response'];
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'Dashboard',
             'function_name' => 'index',
             'lang'=>$lang,
-            'text' => $texts,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'comerces' => $resp['comerces']
         ]);
     }
 }
