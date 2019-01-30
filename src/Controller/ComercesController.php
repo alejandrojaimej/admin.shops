@@ -29,23 +29,27 @@ class ComercesController extends AbstractController
             'text' => $texts,
         ]);
     }
-    public function edit(Request $request, Api $api, Security $security){
+    public function edit($comerce = null, Request $request, Api $api, Security $security){
         $lang = $locale = $request->getLocale();
-        $security->checkLogged($lang, 'comerces/edit');
-        $resp = $api->getText('comerces', $lang);
+        $id = $security->checkLogged($lang, 'comerces/edit');
+        $resp = $api->request('adminText/'.$lang.'/comerces/'.$id);
         $resp = json_decode($resp, true);
-        $texts = $resp['response'];
+        $resp = $resp['response'];
 
         return $this->render('comerces/index.html.twig', [
             'controller_name' => 'Comerces',
             'function_name' => 'edit',
             'lang'=>$lang,
-            'text' => $texts,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'comerces' => $resp['comerces'],
+            'comerce_id' => $comerce,
+            'section' => 'edit'
         ]);
     }
     public function new(Request $request, Api $api, Security $security){
         $lang = $locale = $request->getLocale();
-        $security->checkLogged($lang, 'comerces/new');
+        $id = $security->checkLogged($lang, 'dashboard');
         $resp = $api->getText('comerces', $lang);
         $resp = json_decode($resp, true);
         $texts = $resp['response'];

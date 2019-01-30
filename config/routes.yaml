@@ -47,10 +47,12 @@ comerces:
 #Editar comercios
 comerces_edit:
     path:
-        es: /es/comerces/edit
-        en: /en/comerces/edit
-        zh: /zh/comerces/edit
+        es: /es/comerce/edit/{comerce}
+        en: /en/comerce/edit/{comerce}
+        zh: /zh/comerce/edit/{comerce}
     controller: App\Controller\ComercesController::edit
+    requirements:
+        comerce: '.*' #para que sean válidos todos los caracteres
 #Crear comercios
 comerces_new:
     path:

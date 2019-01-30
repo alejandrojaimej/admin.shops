@@ -74,7 +74,7 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item {% if controller_name == 'Comerces' and function_name == 'edit' %}active open{% endif %}">
+                    <li class="nav-item">
                         <a href="/{{lang}}/comerces/edit" class="nav-link ">
                             <i class="fa fa-plus"></i>
                             <span class="title">{{text.menu_item_2_1}}</span>
@@ -87,12 +87,12 @@
                             <span class="arrow {% if controller_name == 'Comerces' and comerce_id == key %}open{% endif %}"></span>
                         </a>
                         <ul class="sub-menu">
-                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
+                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key and section is defined and section == 'edit' %}active{% endif %}">
                                 <a href="/{{lang}}/comerce/edit/{{key}}" class="nav-link ">
                                     <i class="fa fa-pencil"></i>&nbsp;<span class="title">{{text.menu_item_2_1_1}}</span>
                                 </a>
                             </li>
-                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
+                            <li class="nav-item">
                                 <a href="/{{lang}}/comerce/delete/{{key}}" class="nav-link ">
                                    <i class="fa fa-trash"></i>&nbsp;<span class="title">{{text.menu_item_2_1_2}}</span>
                                 </a>
