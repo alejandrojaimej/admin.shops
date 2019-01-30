@@ -125,6 +125,7 @@ class CreateAccountController extends AbstractController
     public function forgotpass(Request $request, Api $api, \Swift_Mailer $mailer){
         $errorText = false;
         $email = '';
+        $accept = false;
 
         $lang = $locale = $request->getLocale();
         $resp = $api->getText('forgot_password', $lang);
@@ -134,6 +135,7 @@ class CreateAccountController extends AbstractController
             $texts = $resp['response'];
             if(isset($_POST) && !empty($_POST)){
                 $email = $_POST['email'];
+                $accept = true;
             }
         }
 
