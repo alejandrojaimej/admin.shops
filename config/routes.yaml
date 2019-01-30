@@ -19,7 +19,7 @@ create-account:
     controller: App\Controller\CreateAccountController::index
 
 #Resetear contraseña
-create-account:
+forgot-password:
     path:
         es: /es/forgot-password
         en: /en/forgot-password
