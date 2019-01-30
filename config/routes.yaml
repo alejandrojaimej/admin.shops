@@ -18,6 +18,14 @@ create-account:
         zh: /zh/create-account
     controller: App\Controller\CreateAccountController::index
 
+#Resetear contraseña
+create-account:
+    path:
+        es: /es/forgot-password
+        en: /en/forgot-password
+        zh: /zh/forgot-password
+    controller: App\Controller\CreateAccountController::forgotpass
+
 #Activar un usuario ya creado
 activate-user:
     path:

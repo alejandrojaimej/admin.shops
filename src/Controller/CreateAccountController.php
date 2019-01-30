@@ -61,7 +61,7 @@ class CreateAccountController extends AbstractController
                             //iniciar sesion como el usuario
                             //redireccionar a la admin
                             $user = $resp['response'];
-                            dump($user);
+                            //dump($user);
                             $message = (new \Swift_Message('Hello Email'))
                             ->setFrom('noreply.mk1.es@gmail.com')
                             ->setTo($email)
@@ -120,5 +120,30 @@ class CreateAccountController extends AbstractController
             header('Location: /'.($lang == 'es' ? '' : $lang));exit;
 
         }
+    }
+
+    public function forgotpass(Request $request, Api $api, \Swift_Mailer $mailer){
+        $errorText = false;
+        $email = '';
+
+        $lang = $locale = $request->getLocale();
+        $resp = $api->getText('forgot_password', $lang);
+        $resp = json_decode($resp, true);
+        //pintar la view del login
+        if($resp['error'] === false){
+            $texts = $resp['response'];
+            if(isset($_POST) && !empty($_POST)){
+                $email = $_POST['email'];
+            }
+        }
+
+        return $this->render('forgot_password/index.html.twig', [
+            'controller_name' => 'ForgotPassword',
+                'lang'=>$lang,
+                'text' => $texts,
+                'errorText' => $errorText,
+                'email' => $email,
+                'accept' => $accept
+        ]);
     }
 }
