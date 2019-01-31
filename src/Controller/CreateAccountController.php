@@ -171,7 +171,6 @@ class CreateAccountController extends AbstractController
                     }else{
                         $resp = $api->request('forgotPass', 'POST', array('email'=>$_POST['email']));                        
                         $resp = json_decode($resp, true);
-                        dump($resp);exit;
                         if($resp['response'] === false){
                             $errorText = true;
                             $texts['error_message'] = $texts['email_error']; //Se puede poner otro mensaje de error pero no quiero dar pistas
@@ -179,6 +178,7 @@ class CreateAccountController extends AbstractController
                         }else{
                             // Enviar email para recuperar la pass                            
                             $user = $resp['response'];
+                            dump($user);
                             $message = (new \Swift_Message('Forgot Password'))
                             ->setFrom('noreply.mk1.es@gmail.com')
                             ->setTo($email)
