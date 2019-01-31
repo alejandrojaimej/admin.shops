@@ -162,6 +162,7 @@ class CreateAccountController extends AbstractController
                 }//si se envia el email
                 else if(isset($_POST['email'])){
                     $accept = true;
+                    $email = $_POST['email'];
 
                     //si no es un email valido
                     if( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
@@ -170,7 +171,7 @@ class CreateAccountController extends AbstractController
                     }else{
                         $resp = $api->request('forgotPass', 'POST', array('email'=>$_POST['email']));                        
                         $resp = json_decode($resp, true);
-
+                        dump($resp);exit;
                         if($resp['response'] === false){
                             $errorText = true;
                             $texts['error_message'] = $texts['email_error']; //Se puede poner otro mensaje de error pero no quiero dar pistas
