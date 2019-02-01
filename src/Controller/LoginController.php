@@ -63,6 +63,11 @@ class LoginController extends AbstractController
             return $this->render('login/index.html.twig', [
                 'controller_name' => 'LoginController',
                 'lang'=>$lang,
+                'alternate' => [
+                    'es' => 'https://admin.mk1.es/',
+                    'en' => 'https://admin.mk1.es/en',
+                    'zh' => 'https://admin.mk1.es/zh'
+                ],
                 'text' => $texts,
                 'email' => $email,
                 'password' => $password,
