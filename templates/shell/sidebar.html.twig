@@ -75,12 +75,30 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
-                        <a href="/{{lang}}/comerces/edit" class="nav-link ">
-                            <i class="fa fa-plus"></i>
+                        <a href="/{{lang}}/gallery/edit" class="nav-link ">
+                            <i class="fa fa-pencil"></i>
                             <span class="title">{{text.menu_item_2_1}}</span>
                         </a>
                     </li>
-                    {% for key, value in comerces %}
+                    <li class="nav-item">
+                        <a href="/{{lang}}/description/edit" class="nav-link ">
+                            <i class="fa fa-pencil"></i>
+                            <span class="title">{{text.menu_item_2_2}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/{{lang}}/contact/edit" class="nav-link ">
+                            <i class="fa fa-pencil"></i>
+                            <span class="title">{{text.menu_item_2_3}}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/{{lang}}/payment-method/edit" class="nav-link ">
+                            <i class="fa fa-pencil"></i>
+                            <span class="title">{{text.menu_item_2_4}}</span>
+                        </a>
+                    </li>
+                    {#% for key, value in comerces %}
                     <li class="nav-item  {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
                         <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-home"></i>&nbsp;<span class="title">{{value}}</span>
@@ -99,7 +117,7 @@
                             </li>
                         </ul>
                     </li>
-                    {% endfor %}
+                    {% endfor %#}
                 </ul>
             </li>
 
