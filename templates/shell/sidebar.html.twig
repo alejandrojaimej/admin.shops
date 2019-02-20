@@ -69,32 +69,32 @@
             </li>
             <li class="nav-item  {% if controller_name == 'Comerces' %}active open{% endif %}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-briefcase"></i>
+                    <i class="icon-user"></i>
                     <span class="title">{{text.menu_item_2}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item">
                         <a href="/{{lang}}/gallery/edit" class="nav-link ">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-image"></i>
                             <span class="title">{{text.menu_item_2_1}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/{{lang}}/description/edit" class="nav-link ">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-file-text-o"></i>
                             <span class="title">{{text.menu_item_2_2}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/{{lang}}/contact/edit" class="nav-link ">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-envelope-o"></i>
                             <span class="title">{{text.menu_item_2_3}}</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="/{{lang}}/payment-method/edit" class="nav-link ">
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-money"></i>
                             <span class="title">{{text.menu_item_2_4}}</span>
                         </a>
                     </li>
@@ -127,14 +127,26 @@
             </li>
             <li class="nav-item {% if controller_name == 'Products' %}active open{% endif %}">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-briefcase"></i>
+                    <i class="fa fa-diamond"></i>
                     <span class="title">{{text.menu_item_3}}</span>
                     <span class="arrow {% if controller_name == 'Products' %}open{% endif %}"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item {% if controller_name == 'Products' and function_name == 'edit' %}active open{% endif %}">
+                    {#<li class="nav-item {% if controller_name == 'Products' and function_name == 'edit' %}active open{% endif %}">
                         <a href="/{{lang}}/products/edit" class="nav-link ">
                             <span class="title">{{text.menu_item_3_1}}</span>
+                        </a>
+                    </li>#}
+                    <li class="nav-item">
+                        <a href="/{{lang}}/my-services/edit" class="nav-link ">
+                            <i class="fa fa-briefcase"></i>
+                            <span class="title">{{text.menu_item_3_1}}</span>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a href="/{{lang}}/payment-method/edit" class="nav-link ">
+                            <i class="fa fa-arrow-up"></i>
+                            <span class="title">{{text.menu_item_3_2}}</span>
                         </a>
                     </li>
                 </ul>
