@@ -98,6 +98,12 @@
                             <span class="title">{{text.menu_item_2_4}}</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/{{lang}}/about-me/edit" class="nav-link ">
+                            <i class="icon-user"></i>
+                            <span class="title">{{text.menu_item_2_5}}</span>
+                        </a>
+                    </li>
                     {#% for key, value in comerces %}
                     <li class="nav-item  {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
                         <a href="javascript:;" class="nav-link nav-toggle">
