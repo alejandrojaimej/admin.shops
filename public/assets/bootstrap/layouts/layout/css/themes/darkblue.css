@@ -65,7 +65,9 @@
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > i {
       color: #c6cfda; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-menu {
-      width: 195px; }
+      width: 195px;
+      left:auto;
+      right:0; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-language > .dropdown-toggle > .langname {
       color: #c6cfda; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-dark .dropdown-menu {
