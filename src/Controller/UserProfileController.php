@@ -9,21 +9,22 @@ use App\Utils\Api;
 use App\Utils\Security;
 
 
-class DashboardController extends AbstractController
+class UserProfileController extends AbstractController
 {
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/gallery", name="gallery")
      */
-    public function index(Request $request, Api $api, Security $security)
+    public function gallery(Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
-        $id = $security->checkLogged($lang, 'dashboard');
-        $resp = $api->request('adminText/'.$lang.'/dashboard/'.$id);
+        $id = $security->checkLogged($lang, 'gallery');
+        $resp = $api->request('adminText/'.$lang.'/gallery/'.$id);
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
-        return $this->render('dashboard/index.html.twig', [
-            'controller_name' => 'Dashboard',
-            'function_name' => 'index',
+        dump($resp);
+        return $this->render('user_profile/gallery.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'gallery',
             'lang'=>$lang,
             'text' => $resp['texts'],
             'user' => $resp['user']

@@ -67,14 +67,14 @@
             <li class="heading">
                 <h3 class="uppercase">{{text.menu_item_2_title}}</h3>
             </li>
-            <li class="nav-item  {% if controller_name == 'Comerces' %}active open{% endif %}">
+            <li class="nav-item  {% if controller_name == 'UserProfile' %}active open{% endif %}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
                     <span class="title">{{text.menu_item_2}}</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item">
+                    <li class="nav-item  {% if controller_name == 'UserProfile' and function_name == 'gallery' %}active open{% endif %}">
                         <a href="/{{lang}}/gallery/edit" class="nav-link ">
                             <i class="fa fa-image"></i>
                             <span class="title">{{text.menu_item_2_1}}</span>

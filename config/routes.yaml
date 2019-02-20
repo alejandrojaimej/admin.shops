@@ -44,34 +44,10 @@ dashboard:
         zh: /zh/dashboard
     controller: App\Controller\DashboardController::index
 
-#Ver todos los comercios
-comerces:
-    path:
-        es: /es/comerces
-        en: /en/comerces
-        zh: /zh/comerces
-    controller: App\Controller\ComercesController::index
-
 #Editar comercios
-comerces_edit:
+user_profile:
     path:
-        es: /es/comerce/edit/{comerce}
-        en: /en/comerce/edit/{comerce}
-        zh: /zh/comerce/edit/{comerce}
-    controller: App\Controller\ComercesController::edit
-    requirements:
-        comerce: '.*' #para que sean válidos todos los caracteres
-#Crear comercios
-comerces_new:
-    path:
-        es: /es/comerces/new
-        en: /en/comerces/new
-        zh: /zh/comerces/new
-    controller: App\Controller\ComercesController::new
-#Borrar comercios
-comerces_delete:
-    path:
-        es: /es/comerces/delete
-        en: /en/comerces/delete
-        zh: /zh/comerces/delete
-    controller: App\Controller\ComercesController::delete
+        es: /es/gallery/edit
+        en: /en/gallery/edit
+        zh: /zh/gallery/edit
+    controller: App\Controller\UserProfileController::gallery
