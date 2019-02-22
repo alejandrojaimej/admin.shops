@@ -21,13 +21,23 @@ class UserProfileController extends AbstractController
         $resp = $api->request('adminText/'.$lang.'/gallery/'.$id);
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
-        dump($resp);
+
+        $gallery = $api->request('userGallery/'.$id);
+        $gallery = json_decode($gallery, true);
+        dump($gallery);
+        $galleryImages = $gallery['response'];
+
+        dump($galleryImages);
         return $this->render('user_profile/gallery.html.twig', [
             'controller_name' => 'UserProfile',
             'function_name' => 'gallery',
             'lang'=>$lang,
+            'styles' => ['../bootstrap/global/plugins/dropzone/dropzone.min.css','profile/gallery.css'],
+            'scripts' => ['../bootstrap/global/plugins/dropzone/dropzone.min.js','../bootstrap/global/plugins/jquery-ui/jquery-ui.min.js', 'gallery.js'],
             'text' => $resp['texts'],
-            'user' => $resp['user']
+            'user' => $resp['user'],
+            'userId' => $id,
+            'galleryImages' => $galleryImages
         ]);
     }
 }

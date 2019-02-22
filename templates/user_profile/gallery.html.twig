@@ -3,14 +3,34 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    View Galeria
-</div>
+    <h1 class="page-title"> Galería de imágenes
+        <small>Esta es la galería de imágenes de tu perfil en la web</small>
+    </h1>
+    <div class="col-md-12">
+        <div id="dropzone">
+            <form class="dropzone needsclick" id="demo-upload" action="/upload">
+            <div class="dz-message needsclick">    
+                {#Drop files here or click to upload.#}
+                Arrastra imágenes aquí desde tu dispositivo.<br><br>
+                Las imágenes serán añadidas a tu galería.
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12">
+        {% if galleryImages is empty or galleryImages == false %}
+            <div class="note note-info">
+                <p>Aún no has subido ninguna foto!</p>
+            </div>
+        {% else %}
+            <div class="note note-info"><p>Arrastra y suelta las imágenes para ponerlas en el orden deseado</p></div>
+            <div id="sortable" class="col-md-12">
+            {% for image in galleryImages %}
+                <div class="col-md-2" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">
+                        <img class="image" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" alt="{{image.name}}" style="width:100%;">
+                </div>
+            {% endfor %}
+                </div>
+        {% endif %}
+    </div>
 {% endblock %}

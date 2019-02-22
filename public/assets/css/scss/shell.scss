@@ -18,8 +18,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	box-sizing: border-box;
-}
+	box-sizing: border-box; 
+} 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -43,7 +43,7 @@ table {
 	border-spacing: 0;
 }
 input{
-	box-sizing: border-box;
+	box-sizing: border-box; 
 }
 
 
@@ -59,7 +59,7 @@ input{
 		display: table-cell;
 		width: 100%;
 		vertical-align: middle;
-	}
+	}  
 }
 .input-group + .input-group{
 	margin-top: 15px;
@@ -69,7 +69,7 @@ html, body{
 	min-width: 100vw;
 	min-height: 100vh;
 	overflow-x: hidden;
-	color:$text;
+	color: $text;
 	font-family: Raleway;
 }
 .main-button{

@@ -28,7 +28,6 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
-  color: #666;
 }
 
 ol, ul {
@@ -80,7 +79,7 @@ html, body {
   min-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #666;
+  color: #333;
   font-family: Raleway;
 }
 
@@ -97,94 +96,4 @@ html, body {
 .main-button:hover {
   background-color: #b171ea;
 }
-
-.main-form {
-  display: table;
-  position: relative;
-  min-width: 300px;
-  min-height: 300px;
-  margin: 0 auto;
-  top: calc(50vh - 150px);
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 0 12px 0px rgba(0, 0, 0, 0.24);
-          box-shadow: 0 0 12px 0px rgba(0, 0, 0, 0.24);
-}
-
-.main-form h1 {
-  font-size: 2em;
-}
-
-.main-form .main.material-icons {
-  font-size: 5em;
-  display: table;
-  margin: 40px auto;
-}
-
-.main-form .input-group {
-  width: 100%;
-}
-
-.main-form .input-group i {
-  background-color: #393D43;
-}
-
-.main-form .input-group input {
-  background-color: transparent;
-  border: 0;
-  padding: 0 10px;
-  font-size: 1.2em;
-  line-height: 2em;
-  background-color: #3E4349;
-  color: #666;
-}
-
-.main-form .main-button {
-  width: 100%;
-  margin-top: 15px;
-}
-
-.main-form .other_options {
-  display: table;
-  margin-top: 15px;
-  width: 100%;
-}
-
-.main-form .other_options a {
-  color: #666;
-  display: table-cell;
-  width: 50%;
-}
-
-.main-form .other_options a:nth-of-type(2) {
-  text-align: right;
-}
-
-@media all and (max-width: 600px) {
-  .main-form {
-    height: 100vh;
-    left: 0;
-    width: calc(100% - 12px);
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    padding: 15px;
-    position: relative;
-    display: block;
-    margin: 0;
-    top: 0;
-  }
-  .main-form .other_options a {
-    display: block;
-    width: 100%;
-  }
-  .main-form .other_options a:nth-of-type(2) {
-    text-align: left;
-  }
-  .main-form .other_options a + a {
-    margin-top: 15px;
-  }
-}
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=shell.css.map */
