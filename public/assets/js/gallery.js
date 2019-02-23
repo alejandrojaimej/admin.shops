@@ -59,12 +59,11 @@ var dropzone = new Dropzone('#demo-upload', {
     var self = this;
     console.log('funcion de subir imagen')
     for (var i = 0; i < files.length; i++) {
-  
+      let userId = $('#dropzone').attr('data-uid');
       var file = files[i];
       var fData = new FormData();
       fData.append('image', file);
-      fData.append('uId', $('#dropzone').attr('data-uid'));
-      console.log(fData);
+      fData.append('uId', userId);
       
       $.ajax({
         url: '/gallery/uploadImage',
@@ -79,7 +78,12 @@ var dropzone = new Dropzone('#demo-upload', {
           self.emit("success", file, 'success', null);
           self.emit("complete", file);
           self.processQueue();
-          console.log(response)
+          console.log(response);
+          let res = JSON.parse(response)
+          console.log(res)
+          $('#sortable').append('<div class="col-md-2 ui-sortable-handle" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">'+
+            '<img class="image" src="/assets/images/user/'+userId+'/gallery/'+res[1]+'" data-id="'+res[0]+'" data-uid="'+userId+'" alt="'+res[1]+'" style="width:100%;" data-position="6">'+
+          '</div>');
         },
         error: function(jqXHR, textStatus, errorThrown) {
           console.log(textStatus, errorThrown);

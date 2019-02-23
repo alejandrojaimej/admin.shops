@@ -55,11 +55,10 @@ class UserProfileController extends AbstractController
         $response = false;
         if(isset($_FILES) && !empty($_FILES) && isset($_POST) && !empty($_POST)){
             $resp = $api->request('uploadImage', 'POST', array('userId'=>$_POST['uId'], 'image'=>$_FILES['image']) );
-            $resp = json_decode($resp, true);
-            $response = $resp;
-            echo 'dentro'; var_dump($resp);exit;
+            echo $resp;exit;
+            
+            
         }
-        var_dump($response);
         exit;
     }
 }
