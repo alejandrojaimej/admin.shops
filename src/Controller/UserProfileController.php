@@ -24,10 +24,7 @@ class UserProfileController extends AbstractController
 
         $gallery = $api->request('userGallery/'.$id);
         $gallery = json_decode($gallery, true);
-        dump($gallery);
         $galleryImages = $gallery['response'];
-
-        dump($galleryImages);
         return $this->render('user_profile/gallery.html.twig', [
             'controller_name' => 'UserProfile',
             'function_name' => 'gallery',
@@ -39,5 +36,30 @@ class UserProfileController extends AbstractController
             'userId' => $id,
             'galleryImages' => $galleryImages
         ]);
+    }
+
+    public function updateImagePosition(Request $request, Api $api, Security $security)
+    {
+        $response = false;
+        if(isset($_POST) && !empty($_POST)){
+            $resp = $api->request('updateImagePosition', 'POST', array('id'=>$_POST['id'],'position'=>$_POST['position']));
+            $resp = json_decode($resp, true);
+            $response = $resp;
+        }
+        var_dump($response);
+        exit;
+    }
+
+    public function uploadImage(Request $request, Api $api, Security $security)
+    {
+        $response = false;
+        if(isset($_FILES) && !empty($_FILES) && isset($_POST) && !empty($_POST)){
+            $resp = $api->request('uploadImage', 'POST', array('userId'=>$_POST['uId'], 'image'=>$_FILES['image']) );
+            $resp = json_decode($resp, true);
+            $response = $resp;
+            echo 'dentro'; var_dump($resp);exit;
+        }
+        var_dump($response);
+        exit;
     }
 }

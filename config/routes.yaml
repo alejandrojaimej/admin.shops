@@ -44,10 +44,20 @@ dashboard:
         zh: /zh/dashboard
     controller: App\Controller\DashboardController::index
 
-#Editar comercios
+#Editar galería de usuario
 user_profile:
     path:
-        es: /es/gallery/edit
-        en: /en/gallery/edit
-        zh: /zh/gallery/edit
+        es: /es/gallery
+        en: /en/gallery
+        zh: /zh/gallery
     controller: App\Controller\UserProfileController::gallery
+
+#Ajax para actualizar la posición de las imágenes de la galería
+update_images_position:
+    path:  /gallery/updateImagePosition
+    controller: App\Controller\UserProfileController::updateImagePosition
+
+#Ajax para subir imágenes de la galería
+upload_image:
+    path:  /gallery/uploadImage
+    controller: App\Controller\UserProfileController::uploadImage

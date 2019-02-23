@@ -7,7 +7,7 @@
         <small>Esta es la galería de imágenes de tu perfil en la web</small>
     </h1>
     <div class="col-md-12">
-        <div id="dropzone">
+        <div id="dropzone" data-uid="{{userId}}">
             <form class="dropzone needsclick" id="demo-upload" action="/upload">
             <div class="dz-message needsclick">    
                 {#Drop files here or click to upload.#}
@@ -27,7 +27,7 @@
             <div id="sortable" class="col-md-12">
             {% for image in galleryImages %}
                 <div class="col-md-2" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">
-                        <img class="image" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" alt="{{image.name}}" style="width:100%;">
+                        <img class="image" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{userId}}" alt="{{image.name}}" style="width:100%;">
                 </div>
             {% endfor %}
                 </div>

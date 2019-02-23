@@ -28,7 +28,6 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   line-height: 1;
-  color: #666;
 }
 
 ol, ul {
@@ -80,7 +79,7 @@ html, body {
   min-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #666;
+  color: #333;
   font-family: Raleway;
 }
 
@@ -139,7 +138,7 @@ html, body {
   font-size: 1.2em;
   line-height: 2em;
   background-color: #3E4349;
-  color: #666;
+  color: #333;
 }
 
 .main-form .main-button {
@@ -154,7 +153,7 @@ html, body {
 }
 
 .main-form .other_options a {
-  color: #666;
+  color: #333;
   display: table-cell;
   width: 50%;
 }

@@ -9,14 +9,24 @@ $("#sortable").sortable({
             el.setAttribute('data-position', i);
             console.log('actualizar posicion de imagenes')
             //update image position with ajax
-            //updateImage()
+            $.ajax({
+              url: '/gallery/updateImagePosition',
+              type: "post",
+              data: {id: el.getAttribute('data-id'), position:i},
+              success: function (response) {
+                 console.log(response);
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                 console.log(textStatus, errorThrown);
+              }
+            });
+            
         });
      }
 });
+//Desactivar la función "autodiscover de Dropzone" para inicializarla manualmente con eventos custom
 Dropzone.autoDiscover = false;
-
 var dropzone = new Dropzone('#demo-upload', {
-    //previewTemplate: document.querySelector('#preview-template').innerHTML,
     parallelUploads: 2,
     thumbnailHeight: 120,
     thumbnailWidth: 120,
@@ -24,7 +34,6 @@ var dropzone = new Dropzone('#demo-upload', {
     filesizeBase: 1000,
     thumbnail: function(file, dataUrl) {
       if (file.previewElement) {
-        //file.previewElement.classList.remove("dz-file-preview");
         var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
         for (var i = 0; i < images.length; i++) {
           var thumbnailElement = images[i];
@@ -34,8 +43,9 @@ var dropzone = new Dropzone('#demo-upload', {
         setTimeout(function() { file.previewElement.classList.add("dz-image-preview"); }, 1);
       }
     }
-  });
+});
   
+
   
   // Now fake the file upload, since GitHub does not handle file uploads
   // and returns a 404
@@ -51,7 +61,31 @@ var dropzone = new Dropzone('#demo-upload', {
     for (var i = 0; i < files.length; i++) {
   
       var file = files[i];
-      totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
+      var fData = new FormData();
+      fData.append('image', file);
+      fData.append('uId', $('#dropzone').attr('data-uid'));
+      console.log(fData);
+      
+      $.ajax({
+        url: '/gallery/uploadImage',
+        method: 'POST',
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        enctype: 'multipart/form-data',
+        data: fData,
+        success: function (response) {
+          file.status = Dropzone.SUCCESS;
+          self.emit("success", file, 'success', null);
+          self.emit("complete", file);
+          self.processQueue();
+          console.log(response)
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log(textStatus, errorThrown);
+        }
+      });
+      /*totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
   
       for (var step = 0; step < totalSteps; step++) {
         var duration = timeBetweenSteps * (step + 1);
@@ -73,6 +107,7 @@ var dropzone = new Dropzone('#demo-upload', {
             }
           };
         }(file, totalSteps, step), duration);
-      }
+      }*/
     }
   }
+  
