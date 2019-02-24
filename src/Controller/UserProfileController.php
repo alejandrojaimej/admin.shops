@@ -21,6 +21,7 @@ class UserProfileController extends AbstractController
         $resp = $api->request('adminText/'.$lang.'/gallery/'.$id);
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
+        dump($resp);
 
         $gallery = $api->request('userGallery/'.$id);
         $gallery = json_decode($gallery, true);
@@ -56,9 +57,31 @@ class UserProfileController extends AbstractController
         if(isset($_FILES) && !empty($_FILES) && isset($_POST) && !empty($_POST)){
             $resp = $api->request('uploadImage', 'POST', array('userId'=>$_POST['uId'], 'image'=>$_FILES['image']) );
             echo $resp;exit;
-            
-            
         }
+        exit;
+    }
+
+    public function setFavoriteImage(Request $request, Api $api, Security $security)
+    {
+        $response = false;
+        if(isset($_POST) && !empty($_POST)){
+            $resp = $api->request('setFavoriteImage', 'POST', array('id'=>$_POST['id'],'userId'=>$_POST['userId']));
+            $resp = json_decode($resp, true);
+            $response = $resp;
+        }
+        var_dump($response);
+        exit;
+    }
+
+    public function deleteImage(Request $request, Api $api, Security $security)
+    {
+        $response = false;
+        if(isset($_POST) && !empty($_POST)){
+            $resp = $api->request('deleteImage', 'POST', array('id'=>$_POST['id'],'userId'=>$_POST['userId']));
+            $resp = json_decode($resp, true);
+            $response = $resp;
+        }
+        var_dump($response);
         exit;
     }
 }

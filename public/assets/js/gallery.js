@@ -7,26 +7,74 @@ $("#sortable").sortable({
     stop         : function(event,ui){ 
         document.querySelectorAll('#sortable .image').forEach((el, i)=>{
             el.setAttribute('data-position', i);
-            console.log('actualizar posicion de imagenes')
             //update image position with ajax
             $.ajax({
               url: '/gallery/updateImagePosition',
               type: "post",
               data: {id: el.getAttribute('data-id'), position:i},
               success: function (response) {
-                 console.log(response);
               },
               error: function(jqXHR, textStatus, errorThrown) {
-                 console.log(textStatus, errorThrown);
               }
             });
             
         });
      }
 });
+
+function borrarImagen(){
+  let img = $(this).parent().find('.image');
+  let imgId = img.attr('data-id');
+  let userId = img.attr('data-uid');
+  let fData = new FormData();
+  fData.append('id', imgId);
+  fData.append('userId', userId);
+  $.ajax({
+    url: '/gallery/deleteImage',
+    method: 'POST',
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    enctype: 'multipart/form-data',
+    data: fData,
+    success: function (response) {
+      $('#sortable').find($(img).parent()).remove();
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+    }
+  });
+}
+
+function imagenFavorita(){
+  let img = $(this).parent().find('.image');
+  let imgId = img.attr('data-id');
+  let userId = img.attr('data-uid');
+  let fData = new FormData();
+  fData.append('id', imgId);
+  fData.append('userId', userId);
+  $.ajax({
+    url: '/gallery/setFavoriteImage',
+    method: 'POST',
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    enctype: 'multipart/form-data',
+    data: fData,
+    success: function (response) {
+      $('#sortable').find('.image.favorite').removeClass('favorite');
+      $(img).addClass('favorite');
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+    }
+  });
+}
+
+
+$('#sortable .deleteImage').on('click', borrarImagen);
+$('#sortable .favoriteImage').on('click', imagenFavorita);
 //Desactivar la función "autodiscover de Dropzone" para inicializarla manualmente con eventos custom
 Dropzone.autoDiscover = false;
-var dropzone = new Dropzone('#demo-upload', {
+let dropzone = new Dropzone('#demo-upload', {
     parallelUploads: 2,
     thumbnailHeight: 120,
     thumbnailWidth: 120,
@@ -34,9 +82,9 @@ var dropzone = new Dropzone('#demo-upload', {
     filesizeBase: 1000,
     thumbnail: function(file, dataUrl) {
       if (file.previewElement) {
-        var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-        for (var i = 0; i < images.length; i++) {
-          var thumbnailElement = images[i];
+        let images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+        for (let i = 0; i < images.length; i++) {
+          let thumbnailElement = images[i];
           thumbnailElement.alt = file.name;
           thumbnailElement.src = dataUrl;
         }
@@ -50,18 +98,17 @@ var dropzone = new Dropzone('#demo-upload', {
   // Now fake the file upload, since GitHub does not handle file uploads
   // and returns a 404
   
-  var minSteps = 6,
+  let minSteps = 6,
       maxSteps = 60,
       timeBetweenSteps = 100,
       bytesPerStep = 100000;
   
   dropzone.uploadFiles = function(files) {
-    var self = this;
-    console.log('funcion de subir imagen')
-    for (var i = 0; i < files.length; i++) {
+    let self = this;
+    for (let i = 0; i < files.length; i++) {
       let userId = $('#dropzone').attr('data-uid');
-      var file = files[i];
-      var fData = new FormData();
+      let file = files[i];
+      let fData = new FormData();
       fData.append('image', file);
       fData.append('uId', userId);
       
@@ -78,15 +125,17 @@ var dropzone = new Dropzone('#demo-upload', {
           self.emit("success", file, 'success', null);
           self.emit("complete", file);
           self.processQueue();
-          console.log(response);
-          let res = JSON.parse(response)
-          console.log(res)
-          $('#sortable').append('<div class="col-md-2 ui-sortable-handle" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">'+
-            '<img class="image" src="/assets/images/user/'+userId+'/gallery/'+res[1]+'" data-id="'+res[0]+'" data-uid="'+userId+'" alt="'+res[1]+'" style="width:100%;" data-position="6">'+
+          let res = JSON.parse(response);
+          let newImage = $('<div class="col-md-2 ui-sortable-handle" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">'+
+          '<img class="image" src="/assets/images/user/'+userId+'/gallery/'+res[1]+'" data-id="'+res[0]+'" data-uid="'+userId+'" alt="'+res[1]+'" style="width:100%;" data-position="6">'+
+          '<div class="deleteImage" title="borrar imagen"><i class="fa fa-trash-o"></i></div>'+
+          '<div class="favoriteImage" title="imagen favorita"><i class="fa fa-star"></i></div>'+
           '</div>');
+          $(newImage).find('.deleteImage').on('click', borrarImagen);
+          $(newImage).find('.favoriteImage').on('click', imagenFavorita);
+          $('#sortable').append(newImage);
         },
         error: function(jqXHR, textStatus, errorThrown) {
-          console.log(textStatus, errorThrown);
         }
       });
       /*totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
@@ -114,4 +163,4 @@ var dropzone = new Dropzone('#demo-upload', {
       }*/
     }
   }
-  
+

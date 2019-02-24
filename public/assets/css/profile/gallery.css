@@ -107,4 +107,92 @@ html, body {
   color: #333;
   margin: 50px auto;
 }
+
+#sortable .ui-sortable-handle {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  margin: 5px 0 0 5px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+#sortable .ui-sortable-handle .image {
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  position: relative;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#sortable .ui-sortable-handle .image.favorite {
+  border: 2px solid #f5e741;
+}
+
+#sortable .ui-sortable-handle .deleteImage {
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  line-height: 20px;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  color: #FFF;
+  cursor: pointer;
+}
+
+#sortable .ui-sortable-handle .deleteImage i {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+  line-height: 25px;
+  vertical-align: middle;
+  font-size: 1.2em;
+}
+
+#sortable .ui-sortable-handle .deleteImage:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: red;
+}
+
+#sortable .ui-sortable-handle .favoriteImage {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  text-align: center;
+  color: #FFF;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+#sortable .ui-sortable-handle .favoriteImage i {
+  font-size: 1.2em;
+  color: #f5e741;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+#sortable .ui-sortable-handle:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+@media (min-width: 992px) {
+  #sortable .ui-sortable-handle {
+    width: 200px;
+    height: 150px;
+    margin: 5px 0 0 5px;
+  }
+  #sortable .image {
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
 /*# sourceMappingURL=gallery.css.map */

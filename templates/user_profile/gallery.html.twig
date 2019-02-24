@@ -3,16 +3,16 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-    <h1 class="page-title"> Galería de imágenes
-        <small>Esta es la galería de imágenes de tu perfil en la web</small>
+    <h1 class="page-title"> {{text.title}}
+        <small>{{text.subtitle}}</small>
     </h1>
     <div class="col-md-12">
         <div id="dropzone" data-uid="{{userId}}">
             <form class="dropzone needsclick" id="demo-upload" action="/upload">
             <div class="dz-message needsclick">    
                 {#Drop files here or click to upload.#}
-                Arrastra imágenes aquí desde tu dispositivo.<br><br>
-                Las imágenes serán añadidas a tu galería.
+                {{text.dropzone_1}}.<br><br>
+                {{text.dropzone_2}}
             </div>
             </form>
         </div>
@@ -20,14 +20,16 @@
     <div class="col-md-12">
         {% if galleryImages is empty or galleryImages == false %}
             <div class="note note-info">
-                <p>Aún no has subido ninguna foto!</p>
+                <p>{{text.no_image_text}}</p>
             </div>
         {% else %}
-            <div class="note note-info"><p>Arrastra y suelta las imágenes para ponerlas en el orden deseado</p></div>
+            <div class="note note-info"><p>{{text.order_title}}</p></div>
             <div id="sortable" class="col-md-12">
             {% for image in galleryImages %}
-                <div class="col-md-2" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">
-                        <img class="image" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{userId}}" alt="{{image.name}}" style="width:100%;">
+                <div class="col-md-2">
+                        <img class="image{% if image.favorite == 1 %} favorite{% endif %}" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{userId}}" alt="{{image.name}}">
+                        <div class="deleteImage" title="{{text.delete_title}}"><i class="fa fa-trash-o"></i></div>
+                        <div class="favoriteImage" title="{{text.favorite_title}}"><i class="fa fa-star"></i></div>
                 </div>
             {% endfor %}
                 </div>

@@ -56,8 +56,15 @@ user_profile:
 update_images_position:
     path:  /gallery/updateImagePosition
     controller: App\Controller\UserProfileController::updateImagePosition
-
 #Ajax para subir imágenes de la galería
 upload_image:
     path:  /gallery/uploadImage
     controller: App\Controller\UserProfileController::uploadImage
+#Ajax para subir imágenes de la galería
+set_favorite_image:
+    path:  /gallery/setFavoriteImage
+    controller: App\Controller\UserProfileController::setFavoriteImage
+#Ajax para subir imágenes de la galería
+delete_image:
+    path:  /gallery/deleteImage
+    controller: App\Controller\UserProfileController::deleteImage
