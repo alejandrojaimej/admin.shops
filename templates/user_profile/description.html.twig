@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <h1 class="page-title"> {{text.title}}
+        <small>{{text.subtitle}}</small>
+    </h1>
+    <div class="portlet-body form">
+        <form class="form-horizontal" method="post" >
+            <div class="form-body">
+                <div class="form-group last">
+                    <div class="col-md-12">
+                        <textarea name="description" id="summernote_1" style="display: none;">
+                        {{description}}
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn green"><i class="fa fa-check"></i> {{text.submit}}</button>
+                        <button type="submit" name="cancel" class="btn default" style="float:right;"> {{text.cancel}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

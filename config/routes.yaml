@@ -68,3 +68,12 @@ set_favorite_image:
 delete_image:
     path:  /gallery/deleteImage
     controller: App\Controller\UserProfileController::deleteImage
+
+
+#Editar descripcion de usuario
+user_profile_description67:
+    path:
+        es: /es/description
+        en: /en/description
+        zh: /zh/description
+    controller: App\Controller\UserProfileController::description

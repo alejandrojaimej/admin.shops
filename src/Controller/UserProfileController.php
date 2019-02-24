@@ -20,8 +20,7 @@ class UserProfileController extends AbstractController
         $id = $security->checkLogged($lang, 'gallery');
         $resp = $api->request('adminText/'.$lang.'/gallery/'.$id);
         $resp = json_decode($resp, true);
-        $resp = $resp['response'];
-        dump($resp);
+        $resp = $resp['response'];        
 
         $gallery = $api->request('userGallery/'.$id);
         $gallery = json_decode($gallery, true);
@@ -83,5 +82,34 @@ class UserProfileController extends AbstractController
         }
         var_dump($response);
         exit;
+    }
+
+    public function description(Request $request, Api $api, Security $security)
+    {
+        $lang = $locale = $request->getLocale();
+        $id = $security->checkLogged($lang, 'description');
+        $resp = $api->request('adminText/'.$lang.'/description/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+       
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            dump($_POST );
+            $api->request('setDescription', 'POST', array('userId'=>$id,'description'=>$_POST['description']));
+        }
+        $resp2 = $api->request('getDescription/'.$id, 'GET', array('userId'=> $id));
+        $resp2 = json_decode($resp2, true);
+        $description = $resp2['response']['description'];
+        
+        return $this->render('user_profile/description.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'description',
+            'lang'=>$lang,
+            'styles' => ['../bootstrap/global/plugins/bootstrap-summernote/summernote.css'/*,'profile/gallery.css'*/],
+            'scripts' => ['../bootstrap/global/plugins/bootstrap-summernote/summernote.min.js','../bootstrap/global/plugins/jquery-ui/jquery-ui.min.js', 'description.js'],
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'userId' => $id,
+            'description' => $description
+        ]);
     }
 }
