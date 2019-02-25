@@ -3,37 +3,27 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-    <h1 class="page-title"> Contacto
-        <small>Elige el email donde recibirás las notificaciones de la web</small>
+    <h1 class="page-title"> {{text.title}}
+        <small>{{text.subtitle}}</small>
     </h1>
-    
-
     <div class="portlet-body form">
         <!-- BEGIN FORM-->
         <form class="form-horizontal" method="POST">
-            <div class="form-body">
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button> You have some form errors. Please check below. </div>
-                <div class="alert alert-success display-hide">
-                    <button class="close" data-close="alert"></button> Your form validation is successful! </div>
-                
-                <div class="form-group">
-
-                    <div class="col-md-offset-2 col-md-8">
-                        <div class="input-group col-md-12 col-md-offset-0 col-lg-6 col-lg-offset-3 col-xl-4 col-xl-offset-4">
-                            <span class="input-group-addon">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                            <input type="email" class="form-control" name="email" placeholder="Dirección de correo" value="{{email}}"> 
-                        </div>
-                    </div>
+            <div class="form-body col-md-offset-2 col-md-8">
+                <div class="mt-checkbox-list" data-error-container="#form_2_services_error">
+                    {% for payment_method in all_payment_methods %}
+                        <label class="mt-checkbox">
+                            <input type="checkbox" value="{{payment_method.id}}" name="methods[]" {% if payment_method.id in selectedMethods %} checked="ckecked" {% endif %}> {{payment_method[lang]}}
+                            <span></span>
+                        </label>
+                    {% endfor %}
                 </div>
             </div>
-            <div class="form-actions">
+            <div class="form-actions col-md-12">
                 <div class="row">
                     <div class="col-md-12">
-                        <button type="submit" class="btn green"><i class="fa fa-check"></i> Enviar</button>
-                        <button type="button" name="cancel" class="btn grey-salsa btn-outline" style="float:right;">Cancelar</button>
+                        <button type="submit" class="btn green"><i class="fa fa-check"></i> {{text.submit_button}}</button>
+                        <button type="button" name="cancel" class="btn grey-salsa btn-outline" style="float:right;">{{text.cancel_button}}</button>
                     </div>
                 </div>
             </div>

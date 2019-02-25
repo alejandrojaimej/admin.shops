@@ -146,13 +146,20 @@ class UserProfileController extends AbstractController
         $resp = $api->request('adminText/'.$lang.'/payment_method/'.$id);
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
-       
+
+        $pm = $api->request('getAllPaymentMethods/'.$lang, 'GET', array('lang'=>$lang));
+        $pm = json_decode($pm, true);
+        $all_payment_methods = $pm['response'];
+
         if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            $api->request('setContactEmail', 'POST', array('userId'=>$id,'email'=>$_POST['email']));
+            dump($_POST);
+            $api->request('setPaymentMethods', 'POST', array('userId'=>$id,'methods'=>$_POST['methods']));
         }
-        $resp2 = $api->request('getContactEmail/'.$id, 'GET', array('userId'=> $id));
+        $resp2 = $api->request('getUserPaymentMethods/'.$id, 'GET', array('userId'=> $id));
         $resp2 = json_decode($resp2, true);
-        $email = $resp2['response']['email'];
+        
+        $selectedMethods = explode(',', $resp2['response']['payment_methods']);
+        dump($selectedMethods);
         
         return $this->render('user_profile/payment_method.html.twig', [
             'controller_name' => 'UserProfile',
@@ -161,7 +168,8 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
-            'email' => $email
+            'all_payment_methods' => $all_payment_methods,
+            'selectedMethods' => $selectedMethods
         ]);
     }
 }
