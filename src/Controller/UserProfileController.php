@@ -93,7 +93,6 @@ class UserProfileController extends AbstractController
         $resp = $resp['response'];
        
         if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            dump($_POST );
             $api->request('setDescription', 'POST', array('userId'=>$id,'description'=>$_POST['description']));
         }
         $resp2 = $api->request('getDescription/'.$id, 'GET', array('userId'=> $id));
@@ -110,6 +109,59 @@ class UserProfileController extends AbstractController
             'user' => $resp['user'],
             'userId' => $id,
             'description' => $description
+        ]);
+    }
+
+    public function contact(Request $request, Api $api, Security $security)
+    {
+        $lang = $locale = $request->getLocale();
+        $id = $security->checkLogged($lang, 'contact');
+        $resp = $api->request('adminText/'.$lang.'/contact/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+       
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            dump($_POST );
+            $api->request('setContactEmail', 'POST', array('userId'=>$id,'email'=>$_POST['email']));
+        }
+        $resp2 = $api->request('getContactEmail/'.$id, 'GET', array('userId'=> $id));
+        $resp2 = json_decode($resp2, true);
+        $email = $resp2['response']['email'];
+        
+        return $this->render('user_profile/contact.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'contact',
+            'lang'=>$lang,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'userId' => $id,
+            'email' => $email
+        ]);
+    }
+
+    public function payment_method(Request $request, Api $api, Security $security)
+    {
+        $lang = $locale = $request->getLocale();
+        $id = $security->checkLogged($lang, 'payment_method');
+        $resp = $api->request('adminText/'.$lang.'/payment_method/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+       
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            $api->request('setContactEmail', 'POST', array('userId'=>$id,'email'=>$_POST['email']));
+        }
+        $resp2 = $api->request('getContactEmail/'.$id, 'GET', array('userId'=> $id));
+        $resp2 = json_decode($resp2, true);
+        $email = $resp2['response']['email'];
+        
+        return $this->render('user_profile/payment_method.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'payment_method',
+            'lang'=>$lang,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'userId' => $id,
+            'email' => $email
         ]);
     }
 }

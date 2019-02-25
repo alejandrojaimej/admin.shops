@@ -86,13 +86,13 @@
                             <span class="title">{{text.menu_item_2_2}}</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'contact' %}active open{% endif %}">
                         <a href="/{{lang}}/contact" class="nav-link ">
                             <i class="fa fa-envelope-o"></i>
                             <span class="title">{{text.menu_item_2_3}}</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'payment_method' %}active open{% endif %}">
                         <a href="/{{lang}}/payment-method" class="nav-link ">
                             <i class="fa fa-money"></i>
                             <span class="title">{{text.menu_item_2_4}}</span>

@@ -71,9 +71,25 @@ delete_image:
 
 
 #Editar descripcion de usuario
-user_profile_description67:
+user_profile_description:
     path:
         es: /es/description
         en: /en/description
         zh: /zh/description
     controller: App\Controller\UserProfileController::description
+
+#Formas de contacto con el usuario
+user_profile_contact:
+    path:
+        es: /es/contact
+        en: /en/contact
+        zh: /zh/contact
+    controller: App\Controller\UserProfileController::contact
+
+#Formas de pago aceptadas por el usuario
+user_profile_payment_method:
+    path:
+        es: /es/payment-method
+        en: /en/payment-method
+        zh: /zh/payment-method
+    controller: App\Controller\UserProfileController::payment_method
