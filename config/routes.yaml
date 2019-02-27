@@ -93,3 +93,11 @@ user_profile_payment_method:
         en: /en/payment-method
         zh: /zh/payment-method
     controller: App\Controller\UserProfileController::payment_method
+
+#Características del usuario
+user_profile_about_me:
+    path:
+        es: /es/about-me
+        en: /en/about-me
+        zh: /zh/about-me
+    controller: App\Controller\UserProfileController::about_me

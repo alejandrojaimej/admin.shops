@@ -172,4 +172,41 @@ class UserProfileController extends AbstractController
             'selectedMethods' => $selectedMethods
         ]);
     }
+
+
+    public function about_me(Request $request, Api $api, Security $security)
+    {
+        $lang = $locale = $request->getLocale();
+        $id = $security->checkLogged($lang, 'about_me');
+        $resp = $api->request('adminText/'.$lang.'/about_me/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+
+        $pm = $api->request('getAllPaymentMethods/'.$lang, 'GET', array('lang'=>$lang));
+        $pm = json_decode($pm, true);
+        $all_payment_methods = $pm['response'];
+
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            dump($_POST);
+            $api->request('setPaymentMethods', 'POST', array('userId'=>$id,'methods'=>$_POST['methods']));
+        }
+        $resp2 = $api->request('getUserPaymentMethods/'.$id, 'GET', array('userId'=> $id));
+        $resp2 = json_decode($resp2, true);
+        
+        $selectedMethods = explode(',', $resp2['response']['payment_methods']);
+        dump($selectedMethods);
+        
+        return $this->render('user_profile/about_me.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'about_me',
+            'lang'=>$lang,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'userId' => $id,
+            'all_payment_methods' => $all_payment_methods,
+            'selectedMethods' => $selectedMethods,
+            'styles' => ['../bootstrap/global/plugins/bootstrap-select/css/bootstrap-select.min.css'/*,'profile/gallery.css'*/],
+            'scripts' => ['../bootstrap/global/plugins/bootstrap-select/js/bootstrap-select.min.js', '../bootstrap/pages/scripts/components-bootstrap-select.min.js'],
+        ]);
+    }
 }

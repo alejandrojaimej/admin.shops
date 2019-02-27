@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <h1 class="page-title"> Sobre mí
+        <small>Aquí puedes seleccionar los filtros por los que aparecerás en el motor de búsqueda</small>
+    </h1>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        <form class="form-horizontal" method="POST">
+            <div class="form-body col-md-offset-2 col-md-8">
+                <div class="form-group">
+                    <label class="control-label col-md-3">Default</label>
+                    <div class="col-md-9">
+                        <div class="btn-group bootstrap-select bs-select form-control">
+                            <select name="" class="bs-select form-control" tabindex="-98">
+                                <option>Mustard</option>
+                                <option>Ketchup</option>
+                                <option>Relish</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn green"><i class="fa fa-check"></i> Enviar</button>
+                        <button type="button" name="cancel" class="btn grey-salsa btn-outline" style="float:right;">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+{% endblock %}
