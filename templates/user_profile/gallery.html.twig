@@ -28,10 +28,10 @@
                 <div class="col-md-2">
                         <img class="image{% if image.favorite == 1 %} favorite{% endif %}" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{userId}}" alt="{{image.name}}">
                         <div class="deleteImage" title="{{text.delete_title}}"><i class="fa fa-trash-o"></i></div>
-                        <div class="favoriteImage" title="{{text.favorite_title}}"><i class="fa fa-star"></i></div>
+                        <div class="favoriteImage" title="{{text.favorite_title}}"><i class="{% if image.favorite == 1 %}fa fa-star{% else %}icon-star{% endif %}"></i></div>
                 </div>
             {% endfor %}
                 </div>
         {% endif %}
     </div>
-{% endblock %}
+{% endblock %} 
