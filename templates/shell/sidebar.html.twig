@@ -71,60 +71,61 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
                     <span class="title">{{text.menu_item_2}}</span>
-                    <span class="arrow"></span>
+                    <span class="arrow {% if controller_name == 'UserProfile' %}open{% endif %}"></span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  {% if controller_name == 'UserProfile' and function_name == 'gallery' %}active open{% endif %}">
-                        <a href="/{{lang}}/gallery" class="nav-link ">
-                            <i class="fa fa-image"></i>
-                            <span class="title">{{text.menu_item_2_1}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'description' %}active open{% endif %}">
-                        <a href="/{{lang}}/description" class="nav-link ">
-                            <i class="fa fa-file-text-o"></i>
-                            <span class="title">{{text.menu_item_2_2}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'contact' %}active open{% endif %}">
-                        <a href="/{{lang}}/contact" class="nav-link ">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="title">{{text.menu_item_2_3}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'payment_method' %}active open{% endif %}">
-                        <a href="/{{lang}}/payment-method" class="nav-link ">
-                            <i class="fa fa-money"></i>
-                            <span class="title">{{text.menu_item_2_4}}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/{{lang}}/about-me" class="nav-link ">
-                            <i class="icon-user"></i>
-                            <span class="title">{{text.menu_item_2_5}}</span>
-                        </a>
-                    </li>
-                    {#% for key, value in comerces %}
-                    <li class="nav-item  {% if controller_name == 'Comerces' and comerce_id == key %}active open{% endif %}">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-home"></i>&nbsp;<span class="title">{{value}}</span>
-                            <span class="arrow {% if controller_name == 'Comerces' and comerce_id == key %}open{% endif %}"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item {% if controller_name == 'Comerces' and comerce_id == key and section is defined and section == 'edit' %}active{% endif %}">
-                                <a href="/{{lang}}/comerce/edit/{{key}}" class="nav-link ">
-                                    <i class="fa fa-pencil"></i>&nbsp;<span class="title">{{text.menu_item_2_1_1}}</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/{{lang}}/comerce/delete/{{key}}" class="nav-link ">
-                                   <i class="fa fa-trash"></i>&nbsp;<span class="title">{{text.menu_item_2_1_2}}</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {% endfor %#}
-                </ul>
+
+                    <ul class="sub-menu">
+                        {% for profile in user_profiles %}
+                        <li class="nav-item{% if profile_id == profile.profile_id %} open{% endif %}">
+                            <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-notebook"></i>
+                                <span class="title">{{profile.name}}</span>
+                                <span class="arrow{% if profile_id == profile.profile_id %} open{% endif %}"></span>
+                            </a>
+                            <ul class="sub-menu"{% if profile_id == profile.profile_id %} style="display:block;"{% endif %}>
+                                <li class="nav-item  {% if controller_name == 'UserProfile' and function_name == 'gallery' %}active open{% endif %}">
+                                    <a href="/{{lang}}/gallery/{{profile.profile_id}}" class="nav-link ">
+                                        <i class="fa fa-image"></i>
+                                        <span class="title">{{text.menu_item_2_1}}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'description' %}active open{% endif %}">
+                                    <a href="/{{lang}}/description/{{profile.profile_id}}" class="nav-link ">
+                                        <i class="fa fa-file-text-o"></i>
+                                        <span class="title">{{text.menu_item_2_2}}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'contact' %}active open{% endif %}">
+                                    <a href="/{{lang}}/contact/{{profile.profile_id}}" class="nav-link ">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <span class="title">{{text.menu_item_2_3}}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'payment_method' %}active open{% endif %}">
+                                    <a href="/{{lang}}/payment-method/{{profile.profile_id}}" class="nav-link ">
+                                        <i class="fa fa-money"></i>
+                                        <span class="title">{{text.menu_item_2_4}}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/{{lang}}/about-me/{{profile.profile_id}}" class="nav-link ">
+                                        <i class="icon-user"></i>
+                                        <span class="title">{{text.menu_item_2_5}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endfor %}
+                         <li class="nav-item">
+                            <a href="javascript:;" class="nav-link">
+                                <i class="icon-plus"></i>
+                                <span class="title">Nuevo perfil</span>
+                            </a>
+                         </li>
+                    </ul>
+                
+
+                
             </li>
 
             {# products #}

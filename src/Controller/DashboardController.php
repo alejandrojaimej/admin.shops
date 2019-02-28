@@ -31,6 +31,7 @@ class DashboardController extends AbstractController
             'function_name' => 'index',
             'lang'=>$lang,
             'user_profiles' => $user_profiles,
+            'profile_id' => null,
             'text' => $resp['texts'],
             'user' => $resp['user']
         ]);

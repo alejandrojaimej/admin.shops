@@ -56,7 +56,7 @@ user_profile:
 
 #Ajax para actualizar la posición de las imágenes de la galería
 update_images_position:
-    path:  /gallery/updateImagePosition/
+    path:  /gallery/updateImagePosition
     controller: App\Controller\UserProfileController::updateImagePosition
 #Ajax para subir imágenes de la galería
 upload_image:

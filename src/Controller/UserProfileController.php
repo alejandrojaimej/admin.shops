@@ -93,7 +93,7 @@ class UserProfileController extends AbstractController
         exit;
     }
 
-    public function description(Request $request, Api $api, Security $security)
+    public function description($profile_id = null, Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
         $id = $security->checkLogged($lang, 'description');
@@ -104,11 +104,12 @@ class UserProfileController extends AbstractController
         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
         $up = json_decode($up, true);
         $user_profiles = $up['response'];
+        
        
         if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            $api->request('setDescription', 'POST', array('profile_id'=>$id,'description'=>$_POST['description']));
+            $api->request('setDescription', 'POST', array('profile_id'=>$profile_id,'description'=>$_POST['description']));
         }
-        $resp2 = $api->request('getDescription/'.$id, 'GET', array('profile_id'=> $id));
+        $resp2 = $api->request('getDescription/'.$profile_id, 'GET', array('profile_id'=> $profile_id));
         $resp2 = json_decode($resp2, true);
         $description = $resp2['response']['description'];
         
@@ -122,11 +123,12 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
+            'profile_id' => $profile_id,
             'description' => $description
         ]);
     }
 
-    public function contact(Request $request, Api $api, Security $security)
+    public function contact($profile_id = null, Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
         $id = $security->checkLogged($lang, 'contact');
@@ -140,9 +142,9 @@ class UserProfileController extends AbstractController
        
         if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
             dump($_POST );
-            $api->request('setContactEmail', 'POST', array('profile_id'=>$id,'email'=>$_POST['email']));
+            $api->request('setContactEmail', 'POST', array('profile_id'=>$profile_id,'email'=>$_POST['email']));
         }
-        $resp2 = $api->request('getContactEmail/'.$id, 'GET', array('profile_id'=> $id));
+        $resp2 = $api->request('getContactEmail/'.$profile_id, 'GET', array('profile_id'=> $profile_id));
         $resp2 = json_decode($resp2, true);
         $email = $resp2['response']['email'];
         
@@ -154,11 +156,12 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
+            'profile_id' => $profile_id,
             'email' => $email
         ]);
     }
 
-    public function payment_method(Request $request, Api $api, Security $security)
+    public function payment_method($profile_id = null, Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
         $id = $security->checkLogged($lang, 'payment-method');
@@ -169,7 +172,7 @@ class UserProfileController extends AbstractController
         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
         $up = json_decode($up, true);
         $user_profiles = $up['response'];
-
+        dump($user_profiles);
 
 
         $pm = $api->request('getAllPaymentMethods/'.$lang, 'GET', array('lang'=>$lang));
@@ -177,14 +180,12 @@ class UserProfileController extends AbstractController
         $all_payment_methods = $pm['response'];
 
         if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            dump($_POST);
-            $api->request('setPaymentMethods', 'POST', array('profile_id'=>$id,'methods'=>$_POST['methods']));
+            $api->request('setPaymentMethods', 'POST', array('profile_id'=>$profile_id,'methods'=>$_POST['methods']));
         }
-        $resp2 = $api->request('getUserPaymentMethods/'.$id, 'GET', array('profile_id'=> $id));
+        $resp2 = $api->request('getUserPaymentMethods/'.$profile_id, 'GET', array('profile_id'=> $profile_id));
         $resp2 = json_decode($resp2, true);
         
-        $selectedMethods = explode(',', $resp2['response']['payment_methods']);
-        dump($selectedMethods);
+        $selectedMethods = explode(',', $resp2['response']['payment_methods']);        
         
         return $this->render('user_profile/payment_method.html.twig', [
             'controller_name' => 'UserProfile',
@@ -194,6 +195,7 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
+            'profile_id' => $profile_id,
             'all_payment_methods' => $all_payment_methods,
             'selectedMethods' => $selectedMethods
         ]);
