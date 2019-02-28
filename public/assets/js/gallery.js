@@ -25,12 +25,12 @@ $("#sortable").sortable({
 function borrarImagen(){
   let img = $(this).parent().find('.image');
   let imgId = img.attr('data-id');
-  let userId = img.attr('data-uid');
+  let profile_id = img.attr('data-uid');
   let fData = new FormData();
   fData.append('id', imgId);
-  fData.append('userId', userId);
+  fData.append('profile_id', profile_id);
   $.ajax({
-    url: '/gallery/deleteImage',
+    url: '/gallery/deleteImage/'+profile_id,
     method: 'POST',
     processData: false,
     contentType: false,
@@ -48,10 +48,10 @@ function borrarImagen(){
 function imagenFavorita(){
   let img = $(this).parent().find('.image');
   let imgId = img.attr('data-id');
-  let userId = img.attr('data-uid');
+  let profile_id = img.attr('data-uid');
   let fData = new FormData();
   fData.append('id', imgId);
-  fData.append('userId', userId);
+  fData.append('profile_id', profile_id);
   $.ajax({
     url: '/gallery/setFavoriteImage',
     method: 'POST',
@@ -62,7 +62,10 @@ function imagenFavorita(){
     data: fData,
     success: function (response) {
       $('#sortable').find('.image.favorite').removeClass('favorite');
+      $('#sortable').find('.fa.fa-star').removeClass('fa').removeClass('fa-start').addClass('icon-star');
       $(img).addClass('favorite');
+      $('#sortable').find('.image.favorite').parent().find('.favoriteImage .icon-star').remove();
+      $('#sortable').find('.image.favorite').parent().find('.favoriteImage').append('<i class="fa fa-star"></i>')
     },
     error: function(jqXHR, textStatus, errorThrown) {
     }
@@ -106,14 +109,14 @@ let dropzone = new Dropzone('#demo-upload', {
   dropzone.uploadFiles = function(files) {
     let self = this;
     for (let i = 0; i < files.length; i++) {
-      let userId = $('#dropzone').attr('data-uid');
+      let profile_id = $('#dropzone').attr('data-uid');
       let file = files[i];
       let fData = new FormData();
       fData.append('image', file);
-      fData.append('uId', userId);
+      fData.append('uId', profile_id);
       
       $.ajax({
-        url: '/gallery/uploadImage',
+        url: '/gallery/uploadImage/'+profile_id,
         method: 'POST',
         processData: false,
         contentType: false,
@@ -127,7 +130,7 @@ let dropzone = new Dropzone('#demo-upload', {
           self.processQueue();
           let res = JSON.parse(response);
           let newImage = $('<div class="col-md-2 ui-sortable-handle" style="height: 300px;width: 300px;line-height: 300px;font-size: 32px;">'+
-          '<img class="image" src="/assets/images/user/'+userId+'/gallery/'+res[1]+'" data-id="'+res[0]+'" data-uid="'+userId+'" alt="'+res[1]+'" style="width:100%;" data-position="6">'+
+          '<img class="image" src="/assets/images/user/'+profile_id+'/gallery/'+res[1]+'" data-id="'+res[0]+'" data-uid="'+profile_id+'" alt="'+res[1]+'" style="width:100%;" data-position="6">'+
           '<div class="deleteImage" title="borrar imagen"><i class="fa fa-trash-o"></i></div>'+
           '<div class="favoriteImage" title="imagen favorita"><i class="fa fa-star"></i></div>'+
           '</div>');

@@ -7,7 +7,7 @@
         <small>{{text.subtitle}}</small>
     </h1>
     <div class="col-md-12">
-        <div id="dropzone" data-uid="{{userId}}">
+        <div id="dropzone" data-uid="{{profile_id}}">
             <form class="dropzone needsclick" id="demo-upload" action="/upload">
             <div class="dz-message needsclick">
                 {{text.dropzone_1}}<br><br>
@@ -26,7 +26,7 @@
             <div id="sortable" class="col-md-12">
             {% for image in galleryImages %}
                 <div class="col-md-2">
-                        <img class="image{% if image.favorite == 1 %} favorite{% endif %}" src="/assets/images/user/{{userId}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{userId}}" alt="{{image.name}}">
+                        <img class="image{% if image.favorite == 1 %} favorite{% endif %}" src="/assets/images/user/{{profile_id}}/gallery/{{image.name}}" data-id="{{image.id}}" data-uid="{{profile_id}}" alt="{{image.name}}">
                         <div class="deleteImage" title="{{text.delete_title}}"><i class="fa fa-trash-o"></i></div>
                         <div class="favoriteImage" title="{{text.favorite_title}}"><i class="{% if image.favorite == 1 %}fa fa-star{% else %}icon-star{% endif %}"></i></div>
                 </div>

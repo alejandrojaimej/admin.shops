@@ -21,10 +21,16 @@ class DashboardController extends AbstractController
         $resp = $api->request('adminText/'.$lang.'/dashboard/'.$id);
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
+
+        $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
+        $up = json_decode($up, true);
+        $user_profiles = $up['response'];
+        
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'Dashboard',
             'function_name' => 'index',
             'lang'=>$lang,
+            'user_profiles' => $user_profiles,
             'text' => $resp['texts'],
             'user' => $resp['user']
         ]);

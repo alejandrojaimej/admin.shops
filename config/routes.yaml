@@ -47,57 +47,71 @@ dashboard:
 #Editar galería de usuario
 user_profile:
     path:
-        es: /es/gallery
-        en: /en/gallery
-        zh: /zh/gallery
+        es: /es/gallery/{profile_id}
+        en: /en/gallery/{profile_id}
+        zh: /zh/gallery/{profile_id}
     controller: App\Controller\UserProfileController::gallery
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 
 #Ajax para actualizar la posición de las imágenes de la galería
 update_images_position:
-    path:  /gallery/updateImagePosition
+    path:  /gallery/updateImagePosition/
     controller: App\Controller\UserProfileController::updateImagePosition
 #Ajax para subir imágenes de la galería
 upload_image:
-    path:  /gallery/uploadImage
+    path:  /gallery/uploadImage/{profile_id}
     controller: App\Controller\UserProfileController::uploadImage
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 #Ajax para subir imágenes de la galería
 set_favorite_image:
     path:  /gallery/setFavoriteImage
     controller: App\Controller\UserProfileController::setFavoriteImage
 #Ajax para subir imágenes de la galería
 delete_image:
-    path:  /gallery/deleteImage
+    path:  /gallery/deleteImage/{profile_id}
     controller: App\Controller\UserProfileController::deleteImage
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 
 
 #Editar descripcion de usuario
 user_profile_description:
     path:
-        es: /es/description
-        en: /en/description
-        zh: /zh/description
+        es: /es/description/{profile_id}
+        en: /en/description/{profile_id}
+        zh: /zh/description/{profile_id}
     controller: App\Controller\UserProfileController::description
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 
 #Formas de contacto con el usuario
 user_profile_contact:
     path:
-        es: /es/contact
-        en: /en/contact
-        zh: /zh/contact
+        es: /es/contact/{profile_id}
+        en: /en/contact/{profile_id}
+        zh: /zh/contact/{profile_id}
     controller: App\Controller\UserProfileController::contact
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 
 #Formas de pago aceptadas por el usuario
 user_profile_payment_method:
     path:
-        es: /es/payment-method
-        en: /en/payment-method
-        zh: /zh/payment-method
+        es: /es/payment-method/{profile_id}
+        en: /en/payment-method/{profile_id}
+        zh: /zh/payment-method/{profile_id}
     controller: App\Controller\UserProfileController::payment_method
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
 
 #Características del usuario
 user_profile_about_me:
     path:
-        es: /es/about-me
-        en: /en/about-me
-        zh: /zh/about-me
+        es: /es/about-me/{profile_id}
+        en: /en/about-me/{profile_id}
+        zh: /zh/about-me/{profile_id}
     controller: App\Controller\UserProfileController::about_me
+    requirements:
+        profile_id: '.*' #para que sean válidos todos los caracteres
