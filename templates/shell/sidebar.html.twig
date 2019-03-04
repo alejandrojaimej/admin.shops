@@ -75,14 +75,15 @@
                 </a>
 
                     <ul class="sub-menu">
+                        {% if user_profiles is defined and user_profiles is not empty %}
                         {% for profile in user_profiles %}
-                        <li class="nav-item{% if profile_id == profile.profile_id %} open{% endif %}">
+                        <li class="nav-item{% if profile_id is defined and profile_id == profile.profile_id %} open{% endif %}">
                             <a href="javascript:;" class="nav-link nav-toggle">
                                 <i class="icon-notebook"></i>
                                 <span class="title">{{profile.name}}</span>
-                                <span class="arrow{% if profile_id == profile.profile_id %} open{% endif %}"></span>
+                                <span class="arrow{% if profile_id is defined and profile_id == profile.profile_id %} open{% endif %}"></span>
                             </a>
-                            <ul class="sub-menu"{% if profile_id == profile.profile_id %} style="display:block;"{% endif %}>
+                            <ul class="sub-menu"{% if profile_id is defined and profile_id == profile.profile_id %} style="display:block;"{% endif %}>
                                 <li class="nav-item  {% if controller_name == 'UserProfile' and function_name == 'gallery' %}active open{% endif %}">
                                     <a href="/{{lang}}/gallery/{{profile.profile_id}}" class="nav-link ">
                                         <i class="fa fa-image"></i>
@@ -116,10 +117,11 @@
                             </ul>
                         </li>
                         {% endfor %}
+                        {% endif %}
                          <li class="nav-item">
-                            <a href="javascript:;" class="nav-link">
+                            <a href="/{{lang}}/new-profile/" class="nav-link">
                                 <i class="icon-plus"></i>
-                                <span class="title">Nuevo perfil</span>
+                                <span class="title">{{text.menu_item_2_6}}</span>
                             </a>
                          </li>
                     </ul>

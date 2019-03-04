@@ -267,4 +267,32 @@ class UserProfileController extends AbstractController
             'scripts' => ['../bootstrap/global/plugins/bootstrap-select/js/bootstrap-select.min.js', '../bootstrap/pages/scripts/components-bootstrap-select.min.js', '../bootstrap/global/plugins/bootstrap-slider/10.0.0/bootstrap-slider.min.js', '../bootstrap/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js', 'about_me.js'],
         ]);
     }
+
+    public function new_profile(Request $request, Api $api, Security $security)
+    {
+        $lang = $locale = $request->getLocale();
+        $id = $security->checkLogged($lang, 'new-profile');
+        $resp = $api->request('adminText/'.$lang.'/new_profile/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            $api->request('setProfile', 'POST', array('userId'=>$id, 'profile_id'=>0, 'name'=>$_POST['name'], 'surname'=>$_POST['surname'], 'phone'=>$_POST['phone']));
+        }
+
+        $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
+        $up = json_decode($up, true);
+        $user_profiles = $up['response'];
+
+        return $this->render('user_profile/new_profile.html.twig', [
+            'controller_name' => 'UserProfile',
+            'function_name' => 'new_profile',
+            'lang'=>$lang,
+            'user_profiles' => $user_profiles,
+            'text' => $resp['texts'],
+            'user' => $resp['user'],
+            'userId' => $id,
+            'email' => ''
+        ]);
+    }
 }

@@ -115,3 +115,11 @@ user_profile_about_me:
     controller: App\Controller\UserProfileController::about_me
     requirements:
         profile_id: '.*' #para que sean válidos todos los caracteres
+
+#Nuevo perfil
+user_profile_new_profile:
+    path:
+        es: /es/new-profile
+        en: /en/new-profile
+        zh: /zh/new-profile
+    controller: App\Controller\UserProfileController::new_profile

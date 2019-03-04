@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <h1 class="page-title"> {{text.title}}
+        <small>{{text.subtitle}}</small>
+    </h1>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {% if user_profiles is defined and user_profiles is empty %}
+        <form class="form-horizontal" method="POST">
+            <div class="form-body col-md-offset-2 col-md-8">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="input-group col-md-12 col-md-offset-0 col-xl-6">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <input type="text" class="form-control" name="name" placeholder="{{text.name_placeholder}}" value="" required> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="input-group col-md-12 col-md-offset-0 col-xl-6">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <input type="text" class="form-control" name="surname" placeholder="{{text.surname_placeholder}}" value="" required> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <div class="input-group col-md-12 col-md-offset-0 col-xl-6">
+                            <span class="input-group-addon">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <input type="text" class="form-control" name="phone" placeholder="{{text.phone_placeholder}}" value="" required> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn green"><i class="fa fa-check"></i> {{text.submit_button}}</button>
+                        <button type="button" name="cancel" class="btn grey-salsa btn-outline" style="float:right;">{{text.cancel_button}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% elseif user_profiles is not empty %}
+            <div class="note note-warning">
+                <h4 class="block">{{text.alert_title}}</h4>
+                <p> {{text.alert_text}} </p>
+            </div>
+            <p>
+                <a class="btn btn-primary" href="/shop/new-profile">{{text.buy_button}}</a>
+            </p>
+        {% endif %}
+        <!-- END FORM-->
+    </div>
+{% endblock %}
