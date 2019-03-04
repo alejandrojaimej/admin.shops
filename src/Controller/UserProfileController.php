@@ -202,7 +202,7 @@ class UserProfileController extends AbstractController
     }
 
 
-    public function about_me(Request $request, Api $api, Security $security)
+    public function about_me($profile_id = null, Request $request, Api $api, Security $security)
     {
         $lang = $locale = $request->getLocale();
         $id = $security->checkLogged($lang, 'about-me');
@@ -213,6 +213,7 @@ class UserProfileController extends AbstractController
         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
         $up = json_decode($up, true);
         $user_profiles = $up['response'];
+        dump($user_profiles);
 
         $pm = $api->request('getFiltersAndSubfilters/'.$lang, 'GET', array('lang'=>$lang));
         $pm = json_decode($pm, true);
@@ -229,17 +230,28 @@ class UserProfileController extends AbstractController
             }
             array_push($filters[$subfiltros['filter_id']]['sub_filters'], array('subfilter_id'=>$subfiltros['sub_filter_id'], 'name'=>$subfiltros['sub_filter_name']));
         }
-        dump($filters);
-        /*if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            dump($_POST);
-            $api->request('setPaymentMethods', 'POST', array('userId'=>$id,'methods'=>$_POST['methods']));
+        
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            //dump($_POST);
+            $api->request('setFilters', 'POST', array('profile_id'=>$profile_id, 'filters'=>$_POST['filter']));
         }
-        $resp2 = $api->request('getUserPaymentMethods/'.$id, 'GET', array('userId'=> $id));
-        $resp2 = json_decode($resp2, true);
-        
-        $selectedMethods = explode(',', $resp2['response']['payment_methods']);
-        dump($selectedMethods);*/
-        
+
+        $user_filters = $api->request('getUserFilters/'.$profile_id, 'GET', array('profile_id'=> $profile_id));
+        $user_filters = json_decode($user_filters, true);
+        $user_filters = $user_filters['response'];
+        $parsedUserFilters = array();
+        foreach($user_filters as $filter){
+            if($filter['filter_id'] == 5){
+                $fecha = explode('-', $filter['sub_filters']);                
+                $parsedUserFilters[$filter['filter_id']]['day'] = (int)$fecha[0];
+                $parsedUserFilters[$filter['filter_id']]['month'] = (int)$fecha[1];
+                $parsedUserFilters[$filter['filter_id']]['year'] = (int)$fecha[2];
+            }else if($filter['filter_id'] == 7){
+                $parsedUserFilters[$filter['filter_id']] = explode(',', $filter['sub_filters']);
+            }else{
+                $parsedUserFilters[$filter['filter_id']] = $filter['sub_filters'];
+            }
+        }        
         return $this->render('user_profile/about_me.html.twig', [
             'controller_name' => 'UserProfile',
             'function_name' => 'about_me',
@@ -248,7 +260,9 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
+            'profile_id' => $profile_id,
             'filters' => $filters,
+            'user_filters' => $parsedUserFilters,
             'styles' => ['../bootstrap/global/plugins/bootstrap-select/css/bootstrap-select.min.css','../bootstrap/global/plugins/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css', '../bootstrap/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css','profile/about_me.css'],
             'scripts' => ['../bootstrap/global/plugins/bootstrap-select/js/bootstrap-select.min.js', '../bootstrap/pages/scripts/components-bootstrap-select.min.js', '../bootstrap/global/plugins/bootstrap-slider/10.0.0/bootstrap-slider.min.js', '../bootstrap/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js', 'about_me.js'],
         ]);
