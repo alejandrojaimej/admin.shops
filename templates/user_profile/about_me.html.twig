@@ -17,7 +17,7 @@
                         <div class="btn-group bootstrap-select bs-select form-control">
                             <select name="filter[{{filters[1].id}}]" class="bs-select form-control" tabindex="-98">
                                 {% for subfilter in filters[1].sub_filters %}
-                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[1].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
+                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters is defined and user_filters[filters[1].id] is defined and user_filters[filters[1].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="btn-group bootstrap-select bs-select form-control">
                             <select name="filter[{{filters[2].id}}]" class="bs-select form-control" tabindex="-98">
                                 {% for subfilter in filters[2].sub_filters %}
-                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[2].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
+                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters is defined and user_filters[filters[2].id] is defined and user_filters[filters[2].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -43,7 +43,7 @@
                     <label class="control-label col-md-3">{{filters[3].name}}</label>
                     <div class="col-md-9" style="padding-left:30px;">
                         <div class="slider-wrapper green">
-                            <input name="filter[{{filters[3].id}}]" class="input-range" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-tooltip="always" data-slider-max="9.99" data-slider-step="0.01" data-slider-value="{% if user_filters[filters[3].id is defined] %}{{user_filters[filters[3].id]}}{% else %}0{% endif %}"/>
+                            <input name="filter[{{filters[3].id}}]" class="input-range" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-tooltip="always" data-slider-max="9.99" data-slider-step="0.01" data-slider-value="{% if user_filters[filters[3].id] is defined and user_filters[filters[3].id] is not empty %}{{user_filters[filters[3].id]}}{% else %}0{% endif %}"/>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                                     <td>
                                         <select id="day" name="filter[{{filters[5].id}}][day]" class="bs-select form-control" tabindex="-98">
                                         {% for i in 1..31 %}
-                                        <option {% if user_filters[filters[5].id].day == i %}selected="selected"{% endif %}>{{i}}</option>
+                                        <option {% if user_filters[filters[5].id] is defined and user_filters[filters[5].id] is not empty and user_filters[filters[5].id].day == i %}selected="selected"{% endif %}>{{i}}</option>
                                         {% endfor %}
                                         </select>
                                     </td>
@@ -81,7 +81,7 @@
                                         <td>
                                             <select id="month" name="filter[{{filters[5].id}}][month]" class="bs-select form-control" tabindex="-98">
                                             {% for i in 1..12 %}
-                                            <option {% if user_filters[filters[5].id].month == i %}selected="selected"{% endif %}>{{i}}</option>
+                                            <option {% if user_filters[filters[5].id] is defined and user_filters[filters[5].id] is not empty and user_filters[filters[5].id].month == i %}selected="selected"{% endif %}>{{i}}</option>
                                             {% endfor %}
                                             </select>
                                         </td>
@@ -99,7 +99,7 @@
                                             <select id="year" name="filter[{{filters[5].id}}][year]" class="bs-select form-control" tabindex="-98">
                                             {% set startyear = "now"|date('Y') - 17 %}
                                             {% for i in startyear..1920 %}
-                                            <option {% if user_filters[filters[5].id].year == i %}selected="selected"{% endif %}>{{i}}</option>
+                                            <option {% if user_filters[filters[5].id] is defined and user_filters[filters[5].id] is not empty and user_filters[filters[5].id].year == i %}selected="selected"{% endif %}>{{i}}</option>
                                             {% endfor %}
                                             </select>
                                         </td>
@@ -117,7 +117,7 @@
                         <div class="btn-group bootstrap-select bs-select form-control">
                             <select name="filter[{{filters[6].id}}]" class="bs-select form-control" tabindex="-98">
                                 {% for subfilter in filters[6].sub_filters %}
-                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[6].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
+                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[6].id] is defined and user_filters[filters[6].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -131,7 +131,7 @@
                         <div class="mt-radio-list" style="padding-top:7px;">
                             {% for subfilter in filters[7].sub_filters %}
                                 <label class="mt-radio mt-radio-outline"> {{subfilter.name}}
-                                    <input type="checkbox" name="filter[{{filters[7].id}}][{{subfilter.subfilter_id}}]" value="{{subfilter.subfilter_id}}" {% if subfilter.subfilter_id in user_filters[filters[7].id] %} checked {% endif %}>
+                                    <input type="checkbox" name="filter[{{filters[7].id}}][{{subfilter.subfilter_id}}]" value="{{subfilter.subfilter_id}}" {% if user_filters[filters[7].id] is defined and user_filters[filters[7].id] is not empty and  subfilter.subfilter_id in user_filters[filters[7].id] %} checked {% endif %}>
                                     <span></span>
                                 </label>
                             {% endfor %}
@@ -147,7 +147,7 @@
                         <div class="btn-group bootstrap-select bs-select form-control">
                             <select name="filter[{{filters[8].id}}]" class="bs-select form-control" tabindex="-98">
                                 {% for subfilter in filters[8].sub_filters %}
-                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[8].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
+                                    <option value="{{subfilter.subfilter_id}}" {% if user_filters[filters[8].id] is defined and user_filters[filters[8].id] is not empty and user_filters[filters[8].id] == subfilter.subfilter_id %}selected="selected"{% endif %}>{{subfilter.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -158,7 +158,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-3">{{filters[4].name}}</label>
                     <div class="col-md-9">
-                        <input name="filter[{{filters[4].id}}]"  type="text" value="{% if user_filters[filters[4].id] is empty %}18,toys,games{% else %}{{user_filters[filters[4].id]}}{% endif %}" data-role="tagsinput" style="display: none;">
+                        <input name="filter[{{filters[4].id}}]"  type="text" value="{% if user_filters[filters[4].id] is not defined or user_filters[filters[4].id] is empty %}18,toys,games{% else %}{{user_filters[filters[4].id]}}{% endif %}" data-role="tagsinput" style="display: none;">
                     </div>
                 </div>
             </div>

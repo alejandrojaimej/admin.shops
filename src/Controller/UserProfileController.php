@@ -212,8 +212,7 @@ class UserProfileController extends AbstractController
 
         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
         $up = json_decode($up, true);
-        $user_profiles = $up['response'];
-        dump($user_profiles);
+        $user_profiles = $up['response'];        
 
         $pm = $api->request('getFiltersAndSubfilters/'.$lang, 'GET', array('lang'=>$lang));
         $pm = json_decode($pm, true);
@@ -251,7 +250,8 @@ class UserProfileController extends AbstractController
             }else{
                 $parsedUserFilters[$filter['filter_id']] = $filter['sub_filters'];
             }
-        }        
+        }
+        
         return $this->render('user_profile/about_me.html.twig', [
             'controller_name' => 'UserProfile',
             'function_name' => 'about_me',
@@ -276,14 +276,24 @@ class UserProfileController extends AbstractController
         $resp = json_decode($resp, true);
         $resp = $resp['response'];
 
-        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
-            $api->request('setProfile', 'POST', array('userId'=>$id, 'profile_id'=>0, 'name'=>$_POST['name'], 'surname'=>$_POST['surname'], 'phone'=>$_POST['phone']));
-        }
-
         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
         $up = json_decode($up, true);
         $user_profiles = $up['response'];
 
+        if(isset($_POST) && !empty($_POST) && !isset($_POST['cancel'])){
+            //inserta nuevo perfil
+            $api->request('setProfile', 'POST', array('userId'=>$id, 'profile_id'=>0, 'name'=>$_POST['name'], 'surname'=>$_POST['surname'], 'phone'=>$_POST['phone']));
+            //obtiene perfiles [incluido el nuevo que es el ultimo]
+            $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
+            $up = json_decode($up, true);
+            $user_profiles = $up['response'];
+            $lastProfile = end($user_profiles);
+            header('Location: /'.$lang.'/gallery/'.$lastProfile['profile_id']);exit;
+        }
+
+        
+
+        dump($user_profiles);
         return $this->render('user_profile/new_profile.html.twig', [
             'controller_name' => 'UserProfile',
             'function_name' => 'new_profile',
