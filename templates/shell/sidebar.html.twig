@@ -2,7 +2,7 @@
     {# BEGIN SIDEBAR #}
     {# DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing #}
     {# DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed #}
-    <div class="page-sidebar ">
+    <div class="page-sidebar navbar-collapse collapse">
         {# BEGIN SIDEBAR MENU #}
         {# DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) #}
         {# DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode #}
@@ -10,6 +10,7 @@
         {# DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing #}
         {# DOC: Set data-keep-expand="true" to keep the submenues expanded #}
         {# DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed #}
+        
         <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
             {# DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element #}
             {# BEGIN SIDEBAR TOGGLER BUTTON #}
@@ -108,7 +109,7 @@
                                         <span class="title">{{text.menu_item_2_4}}</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'about_me' %}active open{% endif %}">
                                     <a href="/{{lang}}/about-me/{{profile.profile_id}}" class="nav-link ">
                                         <i class="icon-user"></i>
                                         <span class="title">{{text.menu_item_2_5}}</span>
@@ -118,7 +119,7 @@
                         </li>
                         {% endfor %}
                         {% endif %}
-                         <li class="nav-item">
+                        <li class="nav-item {% if controller_name == 'UserProfile' and function_name == 'new_profile' %}active open{% endif %}">
                             <a href="/{{lang}}/new-profile/" class="nav-link">
                                 <i class="icon-plus"></i>
                                 <span class="title">{{text.menu_item_2_6}}</span>
@@ -134,11 +135,11 @@
             <li class="heading">
                 <h3 class="uppercase">{{text.menu_item_3_title}}</h3>
             </li>
-            <li class="nav-item {% if controller_name == 'Products' %}active open{% endif %}">
+            <li class="nav-item  {% if controller_name == 'Shop' %}active open{% endif %}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="fa fa-diamond"></i>
                     <span class="title">{{text.menu_item_3}}</span>
-                    <span class="arrow {% if controller_name == 'Products' %}open{% endif %}"></span>
+                    <span class="arrow {% if controller_name == 'Shop' %}open{% endif %}"></span>
                 </a>
                 <ul class="sub-menu">
                     {#<li class="nav-item {% if controller_name == 'Products' and function_name == 'edit' %}active open{% endif %}">
@@ -152,9 +153,9 @@
                             <span class="title">{{text.menu_item_3_1}}</span>
                         </a>
                     </li>
-                     <li class="nav-item">
-                        <a href="/{{lang}}/payment-method/edit" class="nav-link ">
-                            <i class="fa fa-arrow-up"></i>
+                    <li class="nav-item {% if controller_name == 'Shop' and function_name == 'home' %}active open{% endif %}">
+                        <a href="/{{lang}}/shop/" class="nav-link ">
+                            <i class="fa fa-bank"></i>
                             <span class="title">{{text.menu_item_3_2}}</span>
                         </a>
                     </li>

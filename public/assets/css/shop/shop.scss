@@ -1,0 +1,21 @@
+@import '../scss/colors.scss';
+
+.modal{
+    width: auto;
+    left: calc(50% - 400px);
+    margin-left: 0;
+}
+.modal.in .modal-dialog{
+    margin: 0;
+}
+
+
+@media (max-width: 979px){
+    .modal{
+        width: 100% !important;
+        left:0px;
+    }
+    .modal-dialog{
+        width: 100% !important;
+    }
+}

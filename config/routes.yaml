@@ -123,3 +123,10 @@ user_profile_new_profile:
         en: /en/new-profile
         zh: /zh/new-profile
     controller: App\Controller\UserProfileController::new_profile
+
+shop:
+    path:
+        es: /es/shop
+        en: /en/shop
+        zh: /zh/shop
+    controller: App\Controller\ShopController::home    

@@ -302,7 +302,8 @@ class UserProfileController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
-            'email' => ''
+            'email' => '',
+            
         ]);
     }
 }
