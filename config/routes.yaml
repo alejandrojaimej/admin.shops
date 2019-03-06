@@ -124,9 +124,18 @@ user_profile_new_profile:
         zh: /zh/new-profile
     controller: App\Controller\UserProfileController::new_profile
 
+#Tienda
 shop:
     path:
         es: /es/shop
         en: /en/shop
         zh: /zh/shop
-    controller: App\Controller\ShopController::home    
+    controller: App\Controller\ShopController::home 
+
+#Carrito
+cart:
+    path:
+        es: /es/cart
+        en: /en/cart
+        zh: /zh/cart
+    controller: App\Controller\ShopController::cart    
