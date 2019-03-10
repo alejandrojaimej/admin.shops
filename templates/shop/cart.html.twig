@@ -9,16 +9,16 @@
     <div class="col-md-12">
         <table class="col-sm-12 col-md-6">
         {% for product in cart %}
-            <tr>
+            <tr id="product{{product.product_id}}">
                 <td style="width:160px;padding-top:20px;"><img src="{{product.image}}" style="width:150px;"></td>
                 <td style="padding-top:20px;">
                     <table>
                     <tr><td><h4 style="margin:0;">{{product.title}}</h4></td></tr>
                     <tr><td><h5>{{product.subtitle}}</h5></td></tr>
                     <tr><td><span>Añadido el </span><span>{{product.date_added|date('d-m-Y')}}</span><span> a las </span><span>{{product.date_added|date('H:i:s')}}</span></td></tr>
-                    <tr><td><span>Cantidad </span><span>{{product.quantity}}</span></td></tr>
-                    <tr><td><span>{{product.price}}</span><span>€</span></td></tr>
-                    <tr><td><a class="btn btn-danger" href="javascript:;">Quitar</a> <a class="btn btn-success" href="javascript:addToCart({{product.product_id}});">Añadir</a> </td></tr>
+                    <tr><td><span>Cantidad </span><span class="quantity">{{product.quantity}}</span></td></tr>
+                    <tr><td><span class="price">{{product.price * product.quantity}}</span><span>€</span></td></tr>
+                    <tr><td><a class="btn btn-danger" href="javascript:removeFromCart({{product.product_id}});">Quitar</a> <a class="btn btn-success" href="javascript:addToCart({{product.product_id}});">Añadir</a> </td></tr>
                     </table>
                 </td>
             </tr>

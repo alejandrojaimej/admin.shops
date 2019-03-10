@@ -143,3 +143,7 @@ cart:
 addToCart:
     path: /cart/add
     controller: App\Controller\ShopController::addToCart  
+
+removeFromCart:
+    path: /cart/remove
+    controller: App\Controller\ShopController::removeFromCart  

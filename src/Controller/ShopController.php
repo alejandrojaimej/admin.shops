@@ -136,6 +136,49 @@ class ShopController extends AbstractController
         }
 
         $res = $api->request('setCart', 'POST', array('userId'=>$id,'products'=>json_encode($cart)));
+        echo $cart[$product_id]['quantity'];
+        exit;
+    }
+
+
+    public function removeFromCart(Request $request, Api $api, Security $security){
+        if(!isset($_POST) || empty($_POST) ){echo 'false';exit;}
+        $product_id = (int)$_POST['product_id'];        
+
+        //idioma
+        $lang = $locale = $request->getLocale();
+        //posicion del usuario en la web e id de usuario
+        $id = $security->checkLogged($lang, 'shop');
+        //obtener textos de la seccion
+        $resp = $api->request('adminText/'.$lang.'/shop/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+
+        //obtener los productos en el carrito del usuario
+        $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
+        $cart = json_decode($cart, true);
+        $cart = $cart['response'];
+
+        foreach($cart as $key => $value){
+            unset($value['image']);
+            unset($value['price']);
+            unset($value['title']);
+            unset($value['subtitle']);
+            unset($value['description']);
+            $cart[$key] = $value;
+            $cart[$key]['quantity'] = (int)$cart[$key]['quantity'];
+        }
+        
+        
+        if(array_key_exists($product_id, $cart)){
+            $cart[$product_id]['quantity']--;
+            echo $cart[$product_id]['quantity'];
+            if($cart[$product_id]['quantity'] == 0){
+                unset($cart[$product_id]);
+            }
+        }
+
+        $res = $api->request('setCart', 'POST', array('userId'=>$id,'products'=>json_encode($cart)));
         exit;
     }
 
