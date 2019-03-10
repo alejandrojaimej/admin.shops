@@ -76,6 +76,14 @@ class ShopController extends AbstractController
          $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
          $up = json_decode($up, true);
          $user_profiles = $up['response'];
+
+         //obtener los productos en el carrito del usuario
+         $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
+         $cart = json_decode($cart, true);
+         $cart = $cart['response'];
+
+        dump($cart);
+
          return $this->render('shop/cart.html.twig', [
             'controller_name' => 'Shop',
             'function_name' => 'cart',
@@ -83,11 +91,53 @@ class ShopController extends AbstractController
             'user_profiles' => $user_profiles,
             'text' => $resp['texts'],
             'user' => $resp['user'],
-            'userId' => $id
-            /*'styles'=>['../bootstrap/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css', '../bootstrap/global/plugins/bootstrap-modal/css/bootstrap-modal.css', '../bootstrap/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css', 'shop/shop.css'],
-            'scripts'=>['../bootstrap/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js','../bootstrap/global/plugins/bootstrap-modal/js/bootstrap-modalmanager.js', '../bootstrap/global/plugins/bootstrap-modal/js/bootstrap-modal.js','shop.js']*/
+            'userId' => $id,
+            'cart'=>$cart
         ]);
 
+    }
+
+    public function addToCart(Request $request, Api $api, Security $security){
+        if(!isset($_POST) || empty($_POST) ){echo 'false';exit;}
+        $product_id = (int)$_POST['product_id'];        
+
+        //idioma
+        $lang = $locale = $request->getLocale();
+        //posicion del usuario en la web e id de usuario
+        $id = $security->checkLogged($lang, 'shop');
+        //obtener textos de la seccion
+        $resp = $api->request('adminText/'.$lang.'/shop/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+
+        //obtener los productos en el carrito del usuario
+        $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
+        $cart = json_decode($cart, true);
+        $cart = $cart['response'];
+
+        foreach($cart as $key => $value){
+            unset($value['image']);
+            unset($value['price']);
+            unset($value['title']);
+            unset($value['subtitle']);
+            unset($value['description']);
+            $cart[$key] = $value;
+        }
+        
+        
+        if(array_key_exists($product_id, $cart)){
+            echo 'existe';
+            $cart[$product_id]['quantity']++;
+        }else{
+            $product = array();
+            $product['product_id'] = $product_id;
+            $product['quantity'] = 1;
+            $product['date_added'] = date('Y-m-d H:i:s');
+            $cart[$product_id] = $product;
+        }
+
+        $api->request('setCart', 'POST', array('userId'=>$id,' '=>json_encode($cart)));
+        var_dump(json_encode($cart));exit;
     }
 
 }

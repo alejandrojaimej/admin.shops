@@ -139,3 +139,7 @@ cart:
         en: /en/cart
         zh: /zh/cart
     controller: App\Controller\ShopController::cart    
+
+addToCart:
+    path: /cart/add
+    controller: App\Controller\ShopController::addToCart  
