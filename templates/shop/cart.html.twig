@@ -18,7 +18,7 @@
                     <tr><td><span>Añadido el </span><span>{{product.date_added|date('d-m-Y')}}</span><span> a las </span><span>{{product.date_added|date('H:i:s')}}</span></td></tr>
                     <tr><td><span>Cantidad </span><span>{{product.quantity}}</span></td></tr>
                     <tr><td><span>{{product.price}}</span><span>€</span></td></tr>
-                    <tr><td><a class="btn btn-danger" href="javascript:;">Quitar</a> <a class="btn btn-success" href="javascript:;">Añadir</a> </td></tr>
+                    <tr><td><a class="btn btn-danger" href="javascript:;">Quitar</a> <a class="btn btn-success" href="javascript:addToCart({{product.product_id}});">Añadir</a> </td></tr>
                     </table>
                 </td>
             </tr>

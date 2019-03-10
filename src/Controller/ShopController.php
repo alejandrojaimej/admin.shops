@@ -82,8 +82,6 @@ class ShopController extends AbstractController
          $cart = json_decode($cart, true);
          $cart = $cart['response'];
 
-        dump($cart);
-
          return $this->render('shop/cart.html.twig', [
             'controller_name' => 'Shop',
             'function_name' => 'cart',
@@ -92,7 +90,8 @@ class ShopController extends AbstractController
             'text' => $resp['texts'],
             'user' => $resp['user'],
             'userId' => $id,
-            'cart'=>$cart
+            'cart'=>$cart,
+            'scripts'=>['shop.js']
         ]);
 
     }
@@ -122,11 +121,11 @@ class ShopController extends AbstractController
             unset($value['subtitle']);
             unset($value['description']);
             $cart[$key] = $value;
+            $cart[$key]['quantity'] = (int)$cart[$key]['quantity'];
         }
         
         
         if(array_key_exists($product_id, $cart)){
-            echo 'existe';
             $cart[$product_id]['quantity']++;
         }else{
             $product = array();
@@ -136,8 +135,8 @@ class ShopController extends AbstractController
             $cart[$product_id] = $product;
         }
 
-        $api->request('setCart', 'POST', array('userId'=>$id,' '=>json_encode($cart)));
-        var_dump(json_encode($cart));exit;
+        $res = $api->request('setCart', 'POST', array('userId'=>$id,'products'=>json_encode($cart)));
+        exit;
     }
 
 }
