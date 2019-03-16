@@ -7,50 +7,70 @@
         <small>¡Aquí puedes comprar los productos que quieras!</small>
     </h1>
     <div class="col-md-12">
-        <table class="col-sm-12 col-md-6">
-        {% for product in cart %}
-            <tr id="product{{product.product_id}}">
-                <td style="width:160px;padding-top:20px;"><img src="{{product.image}}" style="width:150px;"></td>
-                <td style="padding-top:20px;">
-                    <table>
-                    <tr><td><h4 style="margin:0;">{{product.title}}</h4></td></tr>
-                    <tr><td><h5>{{product.subtitle}}</h5></td></tr>
-                    <tr><td><span>Añadido el </span><span>{{product.date_added|date('d-m-Y')}}</span><span> a las </span><span>{{product.date_added|date('H:i:s')}}</span></td></tr>
-                    <tr><td><span>Cantidad </span><span class="quantity">{{product.quantity}}</span></td></tr>
-                    <tr><td><span>Precio </span><span class="price">{{product.price * product.quantity}}</span><span>€</span></td></tr>
-                    <tr><td><a class="btn btn-danger" href="javascript:removeFromCart({{product.product_id}});">Quitar</a> <a class="btn btn-success" href="javascript:addToCart({{product.product_id}});">Añadir</a> </td></tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
-        </table>
-        <div class="col-sm-12 col-md-6">
-            <div class="portlet light bordered  col-sm-6 col-md-8 col-lg-6  col-sm-offset-3 col-md-offset-4 col-lg-offset-6">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="icon-basket font-green-sharp"></i>
-                    <span class="caption-subject font-green-sharp sbold">Tu cesta</span>
+        <div class="col-sm-12 col-md-8 mt-sm-8">
+            <table class="col-sm-12 table table-striped table-hover table-bordered">
+            {% for product in cart %}
+                <tr id="product{{product.product_id}}">
+                    <td class="align-middle">
+                        <div class="text-center col-sm-12 col-md-4 row">
+                            <img src="{{product.image}}" class="img-thumbnail">
+                        </div>
+                        <div class="col-sm-12 col-md-8 row" style="padding-top:20px;">
+                            <div class="col-sm-12"><span class="caption-subject font-green-sharp sbold">{{product.title}}</span></div>
+                            <div class="col-sm-12"><h5>{{product.subtitle}}</h5></div>
+                            <div class="col-sm-12"><span>Añadido el </span><span>{{product.date_added|date('d-m-Y')}}</span><span> a las </span><span>{{product.date_added|date('H:i:s')}}</span></div>
+                            <div class="col-sm-12"><span>Cantidad </span><span class="quantity">{{product.quantity}}</span></div>
+                            <div class="col-sm-12"><span>Precio </span><span class="price">{{product.price * product.quantity}}</span><span>€</span></div>
+                            <div class="col-sm-12 text-center"><a class="btn btn-danger" href="javascript:removeFromCart({{product.product_id}});">Quitar</a> <a class="btn btn-success" href="javascript:addToCart({{product.product_id}});">Añadir</a> </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>        
+        <div class="col-sm-12 col-md-4">
+            <div class="portlet light bordered col-sm-12">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-basket font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp sbold">Tu cesta</span>
+                    </div>
                 </div>
-            </div>
-            <div class="portlet-body">
-                <table class="col-sm-12 table table-striped table-hover table-bordered">                
-                {% if cart is not empty %}
-                <tr><th>Producto</th><th class="text-right">Cantidad</th><th class="text-right">Precio</th></tr>
-                {% else %}
-                <tr><td>Tu cesta está vacía</td></tr>
-                {% endif %}
-                {% set Total = 0 %}
-                {% for product in cart %}
-                    <tr><td class="text-left">{{product.title}}</td><td class="text-right">{{product.quantity}}</td><td class="text-right">{{product.price * product.quantity}} €</td></tr>
-                {% set Total = Total + (product.price * product.quantity) %} 
-                {% endfor %}
-                {% if cart is not empty %}
-                    <tr><td class="text-right" colspan="2"><strong>Total</strong></td><td class="text-right"><strong>{{Total}} €</strong></td></td>
-                {% endif %}
-                </table>
-                {% if cart is not empty %}
-                <button class="btn btn-success col-sm-8 col-sm-offset-2" type="submit">Continuar con el pago</button>
-                {% endif %}
+                <div class="portlet-body">
+                    <table class="col-sm-12 table table-striped table-hover table-bordered">                
+                        {% if cart is not empty %}
+                        <tr>
+                            <th>Producto</th>
+                            <th class="text-right">Cantidad</th>
+                            <th class="text-right">Precio</th>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>Tu cesta está vacía</td>
+                        </tr>
+                        {% endif %}
+                        {% set Total = 0 %}
+                        {% for product in cart %}
+                            <tr>
+                                <td class="text-left">{{product.title}}</td>
+                                <td class="text-right">{{product.quantity}}</td>
+                                <td class="text-right">{{product.price * product.quantity}} €</td>
+                            </tr>
+                        {% set Total = Total + (product.price * product.quantity) %} 
+                        {% endfor %}
+                        {% if cart is not empty %}
+                            <tr>
+                                <td class="text-right" colspan="2"><strong>Total</strong></td>
+                                <td class="text-right"><strong>{{Total}} €</strong></td>
+                            </tr>
+                        {% endif %}
+                    </table>
+                    {% if cart is not empty %}
+                    <div class="col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-0 col-xl-8 col-xl-offset-2 text-center">
+                        <button class="btn btn-success col-sm-12" type="submit">Proceder con el pago</button>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
