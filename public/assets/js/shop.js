@@ -6,9 +6,10 @@ function addToCart(product_id = false){
         type: "post",
         data: {product_id: product_id},
         success: function (response) {
-            let price = $('#product'+product_id+' .price').text() / $('#product'+product_id+' .quantity').text();
+            location.reload();
+            /*let price = $('#product'+product_id+' .price').text() / $('#product'+product_id+' .quantity').text();
             $('#product'+product_id+' .quantity').text(response);
-            $('#product'+product_id+' .price').text(price * response);
+            $('#product'+product_id+' .price').text(price * response);*/
         },
         error: function(jqXHR, textStatus, errorThrown) {
         }
@@ -23,11 +24,13 @@ function removeFromCart(product_id = false){
         data: {product_id: product_id},
         success: function (response) {
             if(response > 0){
-                let price = $('#product'+product_id+' .price').text() / $('#product'+product_id+' .quantity').text();
+                location.reload();
+                /*let price = $('#product'+product_id+' .price').text() / $('#product'+product_id+' .quantity').text();
                 $('#product'+product_id+' .quantity').text(response);
-                $('#product'+product_id+' .price').text(price * response);
+                $('#product'+product_id+' .price').text(price * response);*/
             }else{
-                $('#product'+product_id).remove();
+                location.reload();
+                /*$('#product'+product_id).remove();*/
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
