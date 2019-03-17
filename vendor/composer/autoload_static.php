@@ -473,6 +473,10 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
             array (
                 0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
             ),
+            'PayPal' => 
+            array (
+                0 => __DIR__ . '/..' . '/paypal/rest-api-sdk-php/lib',
+            ),
         ),
         'D' => 
         array (
