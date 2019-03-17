@@ -147,3 +147,14 @@ addToCart:
 removeFromCart:
     path: /cart/remove
     controller: App\Controller\ShopController::removeFromCart  
+
+#PayPAl
+paypal:
+    path: /payment
+    controller: App\Controller\PayPalController::main
+paypal_ok:
+    path: /payment/accepted
+    controller: App\Controller\PayPalController::paymentOK
+paypal_ko:
+    path: /payment/refused
+    controller: App\Controller\PayPalController::paymentKO
