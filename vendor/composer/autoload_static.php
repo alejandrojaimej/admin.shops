@@ -85,6 +85,7 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
             'Symfony\\Bridge\\Monolog\\' => 23,
             'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
+            'Sample\\' => 7,
         ),
         'P' => 
         array (
@@ -94,6 +95,7 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
+            'PayPalCheckoutSdk\\' => 18,
             'PackageVersions\\' => 16,
         ),
         'M' => 
@@ -123,6 +125,10 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
             'Doctrine\\Bundle\\MigrationsBundle\\' => 33,
             'Doctrine\\Bundle\\DoctrineCacheBundle\\' => 36,
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
+        ),
+        'B' => 
+        array (
+            'BraintreeHttp\\' => 14,
         ),
         'A' => 
         array (
@@ -354,6 +360,10 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
         array (
             0 => __DIR__ . '/..' . '/sensio/framework-extra-bundle',
         ),
+        'Sample\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/samples',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -377,6 +387,10 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'PayPalCheckoutSdk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/paypal/paypal-checkout-sdk/lib/PayPalCheckoutSdk',
         ),
         'PackageVersions\\' => 
         array (
@@ -448,6 +462,10 @@ class ComposerStaticInit1d3dd983523d1d3395c69cb1900bd96b
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+        ),
+        'BraintreeHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/braintree/braintreehttp/lib/BraintreeHttp',
         ),
         'App\\Tests\\' => 
         array (
