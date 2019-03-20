@@ -18,7 +18,8 @@ class PayPalController extends AbstractController
     {
         echo 'Inicio<br>';
         
-        $paypal->makePayment('0.02');
+        $paypal->addItem($name = 'Peras', $quantity = 2, $price = '0.03', 'arrrrggggg');
+        $paypal->makePayment('0.03');
 
         echo '<br>fin';
         exit;

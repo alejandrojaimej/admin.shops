@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Utils\Api;
 use App\Utils\Security;
+use App\Utils\Paypal;
 
 /**
  * CONTROLADOR DE LA TIENDA
@@ -63,26 +64,32 @@ class ShopController extends AbstractController
     /**
      * CARRITO
      */
-    public function cart(Request $request, Api $api, Security $security){
-         //idioma
-         $lang = $locale = $request->getLocale();
-         //posicion del usuario en la web e id de usuario
-         $id = $security->checkLogged($lang, 'shop');
-         //obtener textos de la seccion
-         $resp = $api->request('adminText/'.$lang.'/shop/'.$id);
-         $resp = json_decode($resp, true);
-         $resp = $resp['response'];
-         //perfiles de usuario para el sidebar
-         $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
-         $up = json_decode($up, true);
-         $user_profiles = $up['response'];
+    public function cart(Request $request, Api $api, Security $security, Paypal $paypal){
+        //idioma
+        $lang = $locale = $request->getLocale();
+        //posicion del usuario en la web e id de usuario
+        $id = $security->checkLogged($lang, 'shop');
+        //obtener textos de la seccion
+        $resp = $api->request('adminText/'.$lang.'/shop/'.$id);
+        $resp = json_decode($resp, true);
+        $resp = $resp['response'];
+        //perfiles de usuario para el sidebar
+        $up = $api->request('getUserProfiles/'.$id, 'GET', array('userId'=>$id));
+        $up = json_decode($up, true);
+        $user_profiles = $up['response'];
 
-         //obtener los productos en el carrito del usuario
-         $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
-         $cart = json_decode($cart, true);
-         $cart = $cart['response'];
+        //obtener los productos en el carrito del usuario
+        $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
+        $cart = json_decode($cart, true);
+        $cart = $cart['response'];
 
-         return $this->render('shop/cart.html.twig', [
+        foreach($cart as $item){
+            $paypal->addItem($item['title'], $item['quantity'], number_format($item['price'], 2, '.', ''), strip_tags($item['description']));
+        }
+        
+        $url_paypal = $paypal->makePayment();
+
+        return $this->render('shop/cart.html.twig', [
             'controller_name' => 'Shop',
             'function_name' => 'cart',
             'lang'=>$lang,
@@ -91,6 +98,7 @@ class ShopController extends AbstractController
             'user' => $resp['user'],
             'userId' => $id,
             'cart'=>$cart,
+            'url_paypal' => $url_paypal,
             'scripts'=>['shop.js']
         ]);
 
