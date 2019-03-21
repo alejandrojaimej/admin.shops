@@ -99,7 +99,7 @@ class ShopController extends AbstractController
             'userId' => $id,
             'cart'=>$cart,
             'url_paypal' => $url_paypal,
-            'scripts'=>['shop.js']
+            'scripts'=>['shop.js', 'cart.js']
         ]);
 
     }

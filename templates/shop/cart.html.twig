@@ -68,6 +68,7 @@
                     {% if cart is not empty %}
                     <div class="col-sm-8 col-sm-offset-2 col-md-12 col-md-offset-0 col-xl-8 col-xl-offset-2 text-center">
                         <a class="btn btn-success col-sm-12" href="{{url_paypal}}">Proceder con el pago</a>
+                        <div id="paypal-button"></div>
                     </div>
                     {% endif %}
                 </div>
@@ -76,4 +77,15 @@
     </div>
 
    
+{% endblock %}
+
+{% block custom_scripts %}
+<!-- Load PayPal's checkout.js Library. -->
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+
+<!-- Load the client component. -->
+<script src="https://js.braintreegateway.com/web/3.43.0/js/client.min.js"></script>
+
+<!-- Load the PayPal Checkout component. -->
+<script src="https://js.braintreegateway.com/web/3.43.0/js/paypal-checkout.min.js"></script>
 {% endblock %}
