@@ -23,3 +23,4 @@ var/cache/dev/profiler/index.csv
 
 src/Utils/Paypal.php
 src/Utils/Paypalv2.php
+src/Utils/Braintree.php
