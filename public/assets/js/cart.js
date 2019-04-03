@@ -1,4 +1,4 @@
-// Create a client.
+/*// Create a client.
 braintree.client.create({
     authorization: CLIENT_AUTHORIZATION
   }, function (clientErr, clientInstance) {
@@ -26,7 +26,7 @@ braintree.client.create({
   
       // Set up PayPal with the checkout.js library
       paypal.Button.render({
-        env: 'sandbox', // Or 'sandbox' 'production'
+        env: 'production', // Or 'sandbox' 'production'
         commit: true, // This will add the transaction amount to the PayPal button
   
         payment: function () {
@@ -70,4 +70,4 @@ braintree.client.create({
   
     });
   
-  });
+  });*/

@@ -82,6 +82,8 @@ class ShopController extends AbstractController
         $cart = $api->request('getCart/'.$lang.'/'.$id, 'GET', array('lang'=>$lang, 'userId'=>$id));
         $cart = json_decode($cart, true);
         $cart = $cart['response'];
+        
+        $paypal->setDebug(true);
 
         foreach($cart as $item){
             $paypal->addItem($item['title'], $item['quantity'], number_format($item['price'], 2, '.', ''), strip_tags($item['description']));
@@ -99,6 +101,12 @@ class ShopController extends AbstractController
             'userId' => $id,
             'cart'=>$cart,
             'url_paypal' => $url_paypal,
+            'PayPalENV' => $paypal->getEnv(),
+            'PayPalClientId' => $paypal->getClientId(),
+            'PayPalPrice' => $paypal->getPrice(),
+            'PayPalCurrency' => $paypal->getCurrency(),
+            'PayPalBaseUrl' => $paypal->getBaseUrl(),            
+            'PayPalPid' => 1,
             'scripts'=>['shop.js', 'cart.js']
         ]);
 
