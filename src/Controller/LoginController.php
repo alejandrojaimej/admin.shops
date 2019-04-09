@@ -61,6 +61,7 @@ class LoginController extends AbstractController
         if($resp['error'] === false){
             $texts = $resp['response'];
             return $this->render('login/index.html.twig', [
+                'section_title' => 'Login',
                 'controller_name' => 'LoginController',
                 'lang'=>$lang,
                 'alternate' => [
