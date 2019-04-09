@@ -53,7 +53,7 @@ class LoginController extends AbstractController
                 $errorText = true;
             }
         }
-
+ 
         
         $resp = $api->getText('login', $lang);
         $resp = json_decode($resp, true);
@@ -61,7 +61,7 @@ class LoginController extends AbstractController
         if($resp['error'] === false){
             $texts = $resp['response'];
             return $this->render('login/index.html.twig', [
-                'section_title' => 'Login',
+                'section_title' => 'Login - alejandro',
                 'controller_name' => 'LoginController',
                 'lang'=>$lang,
                 'alternate' => [
